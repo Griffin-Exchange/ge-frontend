@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import chef from '../../assets/img/chef.png'
+import griffin from '../../assets/img/griffin.png'
+import background from '../../assets/img/background-03.png'
 
 import { useParams } from 'react-router-dom'
 import { useWallet } from 'use-wallet'
@@ -48,35 +49,51 @@ const Farm: React.FC = () => {
   // }, [earnToken])
 
   return (
-    <Page>
-      {!!account ? (
-        <>
-          <PageHeader
-            icon={<img src={chef} height="120" />}
-            title="Stake Sushi Tokens & Earn Fees"
-            subtitle="0.05% of all SushiSwap trades are rewarded to SUSHI stakers"
-          />
-          {/* <FarmCards /> */}
-          <div>TBD</div>
-        </>
-      ) : (
-        <div
-          style={{
-            alignItems: 'center',
-            display: 'flex',
-            flex: 1,
-            justifyContent: 'center',
-          }}
-        >
-          <Button
-            onClick={onPresentWalletProviderModal}
-            text="🔓 Unlock Wallet"
-          />
-        </div>
-      )}
-    </Page>
+    <>
+      <StyledBackground />
+      <Page>
+        {!!account ? (
+          <>
+            <PageHeader
+              icon={<img src={griffin} height="120" />}
+              title="Stake Sushi Tokens & Earn Fees"
+              subtitle="0.05% of all SushiSwap trades are rewarded to GRFN stakers"
+            />
+            {/* <FarmCards /> */}
+            <div>TBD</div>
+          </>
+        ) : (
+          <div
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              flex: 1,
+              justifyContent: 'center',
+            }}
+          >
+            <Button
+              onClick={onPresentWalletProviderModal}
+              text="🔓 Unlock Wallet"
+            />
+          </div>
+        )}
+      </Page>
+    </>
   )
 }
+
+const StyledBackground = styled.div`
+  background: url(${background}) no-repeat;
+  background-size: cover;
+  height: '100%';
+  width: '100%';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+`
 
 const StyledFarm = styled.div`
   align-items: center;

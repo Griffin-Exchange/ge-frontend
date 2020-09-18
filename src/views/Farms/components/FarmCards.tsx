@@ -129,7 +129,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
   return (
     <StyledCardWrapper>
       {farm.tokenSymbol === 'SUSHI' && <StyledCardAccent />}
-      <Card>
+      <CardFarm>
         <CardContent>
           <StyledContent>
             <CardIcon>{farm.icon}</CardIcon>
@@ -177,10 +177,20 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
             </StyledInsight>
           </StyledContent>
         </CardContent>
-      </Card>
+      </CardFarm>
     </StyledCardWrapper>
   )
 }
+
+const CardFarm = styled.div`
+  background: ${(props) => props.theme.color.whiteDoff};
+  border-radius: 12px;
+  box-shadow: 8px 8px 12px 0 rgba(0, 0, 0, 0.15),
+    -8px -8px 12px 0 rgba(255, 255, 255, 1);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+`
 
 const RainbowLight = keyframes`
   
@@ -282,17 +292,19 @@ const StyledDetail = styled.div`
 `
 
 const StyledInsight = styled.div`
+  font-family: 'Bebas Neue', cursive;
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
   border-radius: 8px;
-  background: #fffdfa;
-  color: #aa9584;
+  background: #f5f5f5;
+  color: #282828;
   width: 100%;
   margin-top: 12px;
   line-height: 32px;
   font-size: 13px;
-  border: 1px solid #e6dcd5;
+  box-shadow: inset 3px 3px 7px 0 rgba(0, 0, 0, 0.2),
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
   text-align: center;
   padding: 0 12px;
 `

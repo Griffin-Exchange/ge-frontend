@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import AccountButton from '../components/AccountButton'
 
 const Nav: React.FC = () => {
   return (
@@ -20,9 +21,23 @@ const Nav: React.FC = () => {
       >
         About
       </StyledAbsoluteLink>
+      <StyledAccountButtonWrapper>
+        <AccountButton />
+      </StyledAccountButtonWrapper>
     </StyledNav>
   )
 }
+
+const StyledAccountButtonWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  width: 156px;
+  @media (max-width: 400px) {
+    justify-content: center;
+    width: auto;
+  }
+`
 
 const StyledNav = styled.nav`
   align-items: center;
@@ -30,16 +45,17 @@ const StyledNav = styled.nav`
 `
 
 const StyledLink = styled(NavLink)`
-  color: ${(props) => props.theme.color.grey[400]};
-  font-weight: 700;
+  color: ${(props) => props.theme.color.blackDoff};
+  font-family: 'Bebas Neue', cursive;
+  font-weight: 400;
   padding-left: ${(props) => props.theme.spacing[3]}px;
   padding-right: ${(props) => props.theme.spacing[3]}px;
   text-decoration: none;
   &:hover {
-    color: ${(props) => props.theme.color.grey[500]};
+    color: ${(props) => props.theme.color.brown};
   }
   &.active {
-    color: ${(props) => props.theme.color.primary.main};
+    color: ${(props) => props.theme.color.brown};
   }
   @media (max-width: 400px) {
     padding-left: ${(props) => props.theme.spacing[2]}px;
@@ -48,16 +64,17 @@ const StyledLink = styled(NavLink)`
 `
 
 const StyledAbsoluteLink = styled.a`
-  color: ${(props) => props.theme.color.grey[400]};
-  font-weight: 700;
+  color: ${(props) => props.theme.color.blackDoff};
+  font-family: 'Bebas Neue', cursive;
+  font-weight: 400;
   padding-left: ${(props) => props.theme.spacing[3]}px;
   padding-right: ${(props) => props.theme.spacing[3]}px;
   text-decoration: none;
   &:hover {
-    color: ${(props) => props.theme.color.grey[500]};
+    color: ${(props) => props.theme.color.brown};
   }
   &.active {
-    color: ${(props) => props.theme.color.primary.main};
+    color: ${(props) => props.theme.color.brown};
   }
   @media (max-width: 400px) {
     padding-left: ${(props) => props.theme.spacing[2]}px;

@@ -1,15 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import chef from '../../assets/img/chef.png'
+import griffin from '../../assets/img/griffin.png'
 
 const Logo: React.FC = () => {
   return (
     <StyledLogo to="/">
-      <img src={chef} height="32" style={{ marginTop: -4 }} />
-      <StyledText>
-        SushiSwap <MasterChefText>MasterChef</MasterChefText>
-      </StyledText>
+      <img src={griffin} height="45" style={{ marginTop: -4 }} />
+      <StyledText>GRIFFIN EXCHANGE</StyledText>
     </StyledLogo>
   )
 }
@@ -24,12 +22,12 @@ const StyledLogo = styled(Link)`
   padding: 0;
   text-decoration: none;
 `
+// font-family: 'Reem Kufi', sans-serif;
 
 const StyledText = styled.span`
-  color: ${(props) => props.theme.color.grey[600]};
-  font-family: 'Reem Kufi', sans-serif;
+  color: ${(props) => props.theme.color.blackDoff};
+  font-family: 'Bebas Neue', cursive;
   font-size: 20px;
-  font-weight: 700;
   letter-spacing: 0.03em;
   margin-left: ${(props) => props.theme.spacing[2]}px;
   @media (max-width: 400px) {
@@ -37,8 +35,8 @@ const StyledText = styled.span`
   }
 `
 
-const MasterChefText = styled.span`
-  font-family: 'Kaushan Script', sans-serif;
-`
+// const MasterChefText = styled.span`
+//   font-family: 'Kaushan Script', sans-serif;
+// `
 
 export default Logo

@@ -39,10 +39,10 @@ const Value: React.FC<ValueProps> = ({ value, decimals }) => {
 }
 
 const StyledValue = styled.div`
-  font-family: 'Roboto Mono', monospace;
-  color: ${(props) => props.theme.color.grey[600]};
-  font-size: 36px;
-  font-weight: 700;
+  color: ${(props) => props.theme.color.blackDoff};
+  font-size: 32px;
+  font-family: 'Bebas Neue', cursive;
+  margin-left: 8px;
 `
 
 export default Value

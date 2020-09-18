@@ -14,7 +14,7 @@ const Nav: React.FC = () => {
         target="_blank"
         href="https://uniswap.info/pair/0xce84867c3c02b05dc570d0135103d3fb9cc19433"
       >
-        Uniswap SUSHI-ETH
+        Uniswap GRFN-ETH
       </StyledLink>
       <StyledLink target="_blank" href="https://discord.gg/hJ2p555">
         Discord
@@ -35,7 +35,8 @@ const StyledNav = styled.nav`
 `
 
 const StyledLink = styled.a`
-  color: ${(props) => props.theme.color.grey[400]};
+  font-family: 'Bebas Neue', cursive;
+  color: ${(props) => props.theme.color.blackDoff};
   padding-left: ${(props) => props.theme.spacing[3]}px;
   padding-right: ${(props) => props.theme.spacing[3]}px;
   text-decoration: none;

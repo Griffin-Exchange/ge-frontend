@@ -89,38 +89,39 @@ const Balances: React.FC = () => {
     <StyledWrapper>
       <Card>
         <CardContent>
-          <StyledBalances>
-            <StyledBalance>
-              <SushiIcon />
-              <Spacer />
-              <div style={{ flex: 1 }}>
-                <Label text="Your SUSHI Balance" />
-                <Value
-                  value={!!account ? getBalanceNumber(sushiBalance) : 'Locked'}
-                />
-              </div>
-            </StyledBalance>
-          </StyledBalances>
+          <StyledLabel>YOUR GRIFFIN BALANCES</StyledLabel>
+          <LabelDivider />
+          <BalanceContainer>
+            {!!account ? <PreffixBalance>GRFN</PreffixBalance> : <></>}
+            <Value
+              value={!!account ? getBalanceNumber(sushiBalance) : 'Locked'}
+            />
+          </BalanceContainer>
         </CardContent>
         <Footnote>
           Pending harvest
+          <FooterDivider />
           <FootnoteValue>
-            <PendingRewards /> SUSHI
+            <PendingRewards /> GRFN
           </FootnoteValue>
         </Footnote>
       </Card>
       <Spacer />
-
       <Card>
         <CardContent>
-          <Label text="Total SUSHI Supply" />
-          <Value
-            value={totalSupply ? getBalanceNumber(totalSupply) : 'Locked'}
-          />
+          <StyledLabel>TOTAL GRIFFIN SUPPLY</StyledLabel>
+          <LabelDivider />
+          <BalanceContainer>
+            {totalSupply ? <PreffixBalance>GRFN</PreffixBalance> : <></>}
+            <Value
+              value={totalSupply ? getBalanceNumber(totalSupply) : 'Locked'}
+            />
+          </BalanceContainer>
         </CardContent>
         <Footnote>
-          New rewards per block
-          <FootnoteValue>1,000 SUSHI</FootnoteValue>
+          <span style={{ width: '120px' }}>New rewards per block</span>
+          <FooterDivider />
+          <FootnoteValue>1,000 GRFN</FootnoteValue>
         </Footnote>
       </Card>
     </StyledWrapper>
@@ -130,12 +131,16 @@ const Balances: React.FC = () => {
 const Footnote = styled.div`
   font-size: 14px;
   padding: 8px 20px;
-  color: ${(props) => props.theme.color.grey[400]};
-  border-top: solid 1px ${(props) => props.theme.color.grey[300]};
+  font-family: 'Bebas Neue', cursive;
+  color: ${(props) => props.theme.color.blackDoff};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
 const FootnoteValue = styled.div`
-  font-family: 'Roboto Mono', monospace;
-  float: right;
+  font-family: 'Bebas Neue', cursive;
+  color: ${(props) => props.theme.color.blackDoff};
+  min-width: 50px;
 `
 
 const StyledWrapper = styled.div`
@@ -146,6 +151,38 @@ const StyledWrapper = styled.div`
     flex-flow: column nowrap;
     align-items: stretch;
   }
+`
+const LabelDivider = styled.div`
+  height: 1px;
+  background-color: #282828;
+  width: 70%;
+  margin-top: -5px;
+  margin-bottom: 13px;
+`
+
+const FooterDivider = styled.div`
+  border-bottom: 1px #282828 solid;
+  width: 40%;
+  margin-right: 5px;
+`
+
+const BalanceContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+`
+
+const PreffixBalance = styled.span`
+  font-size: 22px;
+  font-family: 'Bebas Neue', cursive;
+  margin-bottom: 3px;
+`
+
+const StyledLabel = styled.label`
+  padding-left: 10px;
+  font-size: 32px;
+  color: ${(props) => props.theme.color.blackDoff};
+  font-family: 'Bebas Neue', cursive;
 `
 
 const StyledBalances = styled.div`
