@@ -10,7 +10,7 @@ const Label: React.FC<LabelProps> = ({ text }) => (
 )
 
 const StyledLabel = styled.div`
-  color: ${(props) => props.theme.color.blackDoff};
+  color: ${(props) => props.theme.color.whiteDoff};
   font-family: 'Bebas Neue', cursive;
 `
 

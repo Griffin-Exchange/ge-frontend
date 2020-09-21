@@ -4,8 +4,8 @@ import {
   grey,
   red,
   white,
-  blackDoff,
   whiteDoff,
+  blackDoff,
   brown,
 } from './colors'
 

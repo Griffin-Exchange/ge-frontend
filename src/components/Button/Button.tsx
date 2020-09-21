@@ -33,7 +33,7 @@ const Button: React.FC<ButtonProps> = ({
       break
     case 'default':
     default:
-      buttonColor = color.whiteDoff
+      buttonColor = color.blackDoff
   }
 
   let boxShadow: string
@@ -42,23 +42,23 @@ const Button: React.FC<ButtonProps> = ({
   let fontSize: number
   switch (size) {
     case 'sm':
-      boxShadow = `4px 4px 8px rgba(0, 0, 0, 0.15),
-        -8px -8px 16px rgba(255, 255, 255, 1);`
+      boxShadow = `4px 4px 8px #1b1b1b,
+        -8px -8px 16px #353535;`
       buttonPadding = spacing[3]
       buttonSize = 36
       fontSize = 14
       break
     case 'lg':
-      boxShadow = `6px 6px 12px rgba(0, 0, 0, 0.15),
-        -12px -12px 24px rgba(255, 255, 255, 1);`
+      boxShadow = `6px 6px 12px #1b1b1b,
+        -12px -12px 24px #353535;`
       buttonPadding = spacing[4]
       buttonSize = 72
       fontSize = 16
       break
     case 'md':
     default:
-      boxShadow = `6px 6px 12px rgba(0, 0, 0, 0.15),
-        -12px -12px 24px -2px rgba(255, 255, 255, 1);`
+      boxShadow = `6px 6px 12px #1b1b1b,
+        -12px -12px 24px -2px #353535;`
       buttonPadding = spacing[4]
       buttonSize = 56
       fontSize = 16
@@ -105,13 +105,13 @@ interface StyledButtonProps {
 
 const StyledButton = styled.button<StyledButtonProps>`
   align-items: center;
-  background-color: ${(props) => props.theme.color.whiteDoff};
+  background-color: ${(props) => props.theme.color.blackDoff};
   border: 0;
   border-radius: 12px;
   box-shadow: ${(props) => props.boxShadow};
   font-family: 'Bebas Neue', cursive;
   color: ${(props) =>
-    !props.disabled ? props.theme.color.blackDoff : `${props.color}55`};
+    !props.disabled ? props.theme.color.whiteDoff : `${props.color}55`};
   cursor: pointer;
   display: flex;
   font-size: ${(props) => props.fontSize}px;

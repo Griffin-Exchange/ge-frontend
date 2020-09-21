@@ -183,17 +183,16 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 }
 
 const CardFarm = styled.div`
-  background: ${(props) => props.theme.color.whiteDoff};
+  background: ${(props) => props.theme.color.blackDoff};
   border-radius: 12px;
-  box-shadow: 8px 8px 12px 0 rgba(0, 0, 0, 0.15),
-    -8px -8px 12px 0 rgba(255, 255, 255, 1);
+  box-shadow: 17px 17px 34px #1b1b1b, -17px -17px 34px #353535;
   display: flex;
   flex: 1;
   flex-direction: column;
+  z-index: 1;
 `
 
 const RainbowLight = keyframes`
-  
 	0% {
 		background-position: 0% 50%;
 	}
@@ -225,11 +224,11 @@ const StyledCardAccent = styled.div`
   border-radius: 12px;
   filter: blur(6px);
   position: absolute;
-  top: -2px;
-  right: -2px;
-  bottom: -2px;
-  left: -2px;
-  z-index: -1;
+  top: -10px;
+  right: -10px;
+  bottom: -10px;
+  left: -10px;
+  z-index: 0;
 `
 
 const StyledCards = styled.div`
@@ -264,7 +263,7 @@ const StyledCardWrapper = styled.div`
 `
 
 const StyledTitle = styled.h4`
-  color: ${(props) => props.theme.color.grey[600]};
+  color: #fdab74;
   font-size: 24px;
   font-weight: 700;
   margin: ${(props) => props.theme.spacing[2]}px 0 0;
@@ -288,7 +287,7 @@ const StyledDetails = styled.div`
 `
 
 const StyledDetail = styled.div`
-  color: ${(props) => props.theme.color.grey[500]};
+  color: #fc8a58;
 `
 
 const StyledInsight = styled.div`
@@ -297,14 +296,13 @@ const StyledInsight = styled.div`
   justify-content: space-between;
   box-sizing: border-box;
   border-radius: 8px;
-  background: #f5f5f5;
-  color: #282828;
+  background: #282828;
+  color: #fff;
   width: 100%;
   margin-top: 12px;
   line-height: 32px;
   font-size: 13px;
-  box-shadow: inset 3px 3px 7px 0 rgba(0, 0, 0, 0.2),
-    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: inset 3px 3px 7px 0 #1b1b1b, inset -6px -6px 10px 0 #353535;
   text-align: center;
   padding: 0 12px;
 `

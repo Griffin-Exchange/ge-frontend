@@ -23,4 +23,4 @@ export const grey = {
 
 export const blackDoff = '#282828'
 export const whiteDoff = '#F5F5F5'
-export const brown = '#A35224';
+export const brown = '#A35224'

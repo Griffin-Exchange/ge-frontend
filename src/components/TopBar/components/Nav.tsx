@@ -15,12 +15,12 @@ const Nav: React.FC = () => {
       <StyledLink exact activeClassName="active" to="/staking">
         Staking
       </StyledLink>
-      <StyledAbsoluteLink
+      {/* <StyledAbsoluteLink
         href="https://medium.com/sushiswap/the-sushiswap-project-c4049ea9941e"
         target="_blank"
       >
         About
-      </StyledAbsoluteLink>
+      </StyledAbsoluteLink> */}
       <StyledAccountButtonWrapper>
         <AccountButton />
       </StyledAccountButtonWrapper>
@@ -45,7 +45,7 @@ const StyledNav = styled.nav`
 `
 
 const StyledLink = styled(NavLink)`
-  color: ${(props) => props.theme.color.blackDoff};
+  color: ${(props) => props.theme.color.whiteDoff};
   font-family: 'Bebas Neue', cursive;
   font-weight: 400;
   padding-left: ${(props) => props.theme.spacing[3]}px;
@@ -63,23 +63,23 @@ const StyledLink = styled(NavLink)`
   }
 `
 
-const StyledAbsoluteLink = styled.a`
-  color: ${(props) => props.theme.color.blackDoff};
-  font-family: 'Bebas Neue', cursive;
-  font-weight: 400;
-  padding-left: ${(props) => props.theme.spacing[3]}px;
-  padding-right: ${(props) => props.theme.spacing[3]}px;
-  text-decoration: none;
-  &:hover {
-    color: ${(props) => props.theme.color.brown};
-  }
-  &.active {
-    color: ${(props) => props.theme.color.brown};
-  }
-  @media (max-width: 400px) {
-    padding-left: ${(props) => props.theme.spacing[2]}px;
-    padding-right: ${(props) => props.theme.spacing[2]}px;
-  }
-`
+// const StyledAbsoluteLink = styled.a`
+//   color: ${(props) => props.theme.color.whiteDoff};
+//   font-family: 'Bebas Neue', cursive;
+//   font-weight: 400;
+//   padding-left: ${(props) => props.theme.spacing[3]}px;
+//   padding-right: ${(props) => props.theme.spacing[3]}px;
+//   text-decoration: none;
+//   &:hover {
+//     color: ${(props) => props.theme.color.brown};
+//   }
+//   &.active {
+//     color: ${(props) => props.theme.color.brown};
+//   }
+//   @media (max-width: 400px) {
+//     padding-left: ${(props) => props.theme.spacing[2]}px;
+//     padding-right: ${(props) => props.theme.spacing[2]}px;
+//   }
+// `
 
 export default Nav

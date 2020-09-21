@@ -25,7 +25,7 @@ const StyledLogo = styled(Link)`
 // font-family: 'Reem Kufi', sans-serif;
 
 const StyledText = styled.span`
-  color: ${(props) => props.theme.color.blackDoff};
+  color: ${(props) => props.theme.color.whiteDoff};
   font-family: 'Bebas Neue', cursive;
   font-size: 20px;
   letter-spacing: 0.03em;

@@ -42,7 +42,7 @@ const StyledIcon = styled.div`
 
 const StyledTitle = styled.h1`
   font-family: 'Bebas Neue', cursive;
-  color: ${(props) => props.theme.color.blackDoff};
+  color: ${(props) => props.theme.color.whiteDoff};
   font-size: 36px;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -52,7 +52,7 @@ const StyledTitle = styled.h1`
 `
 
 const StyledSubtitle = styled.h3`
-  color: ${(props) => props.theme.color.blackDoff};
+  color: ${(props) => props.theme.color.whiteDoff};
   font-size: 18px;
   font-weight: 400;
   margin: 0;

@@ -37,9 +37,10 @@ const Value: React.FC<ValueProps> = ({ value, decimals }) => {
     </StyledValue>
   )
 }
+// color: ${(props) => props.theme.color.blackDoff};
 
 const StyledValue = styled.div`
-  color: ${(props) => props.theme.color.blackDoff};
+  color: #ff6348;
   font-size: 32px;
   font-family: 'Bebas Neue', cursive;
   margin-left: 8px;

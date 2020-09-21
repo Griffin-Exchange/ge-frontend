@@ -17,7 +17,7 @@ const Home: React.FC = () => {
         <PageHeader
           icon={<img src={griffin} height={200} />}
           title="GRIFFIN EXCHANGE"
-          subtitle="Stake Uniswap LP tokens to claim your very own yummy GRFN!"
+          subtitle="Stake Uniswap LP tokens to claim your very own GRFN Tokens!"
         />
 
         <Container>
@@ -55,7 +55,7 @@ const StyledBackground = styled.div`
 `
 
 const StyledInfo = styled.h3`
-  color: ${(props) => props.theme.color.blackDoff};
+  color: ${(props) => props.theme.color.whiteDoff};
   font-size: 16px;
   font-weight: 400;
   margin: 0;
@@ -63,7 +63,7 @@ const StyledInfo = styled.h3`
   text-align: center;
 
   > b {
-    color: ${(props) => props.theme.color.blackDoff};
+    color: ${(props) => props.theme.color.whiteDoff};
   }
 `
 

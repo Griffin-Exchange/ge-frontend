@@ -24,10 +24,9 @@ const WalletCard: React.FC<WalletCardProps> = ({ icon, onConnect, title }) => (
 )
 
 const CardWallet = styled.div`
-  background: ${(props) => props.theme.color.whiteDoff};
+  background: ${(props) => props.theme.color.blackDoff};
   border-radius: 12px;
-  box-shadow: 8px 8px 12px 0 rgba(0, 0, 0, 0.15),
-    -8px -8px 12px 0 rgba(255, 255, 255, 1);
+  box-shadow: 8px 8px 12px 0 #1b1b1b, -8px -8px 12px 0 #353535;
   display: flex;
   flex: 1;
   flex-direction: column;

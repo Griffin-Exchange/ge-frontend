@@ -132,14 +132,14 @@ const Footnote = styled.div`
   font-size: 14px;
   padding: 8px 20px;
   font-family: 'Bebas Neue', cursive;
-  color: ${(props) => props.theme.color.blackDoff};
+  color: ${(props) => props.theme.color.whiteDoff};
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
 const FootnoteValue = styled.div`
   font-family: 'Bebas Neue', cursive;
-  color: ${(props) => props.theme.color.blackDoff};
+  color: #ff6348;
   min-width: 50px;
 `
 
@@ -154,14 +154,14 @@ const StyledWrapper = styled.div`
 `
 const LabelDivider = styled.div`
   height: 1px;
-  background-color: #282828;
+  background-color: #fff;
   width: 70%;
   margin-top: -5px;
   margin-bottom: 13px;
 `
 
 const FooterDivider = styled.div`
-  border-bottom: 1px #282828 solid;
+  border-bottom: 1px #fff solid;
   width: 40%;
   margin-right: 5px;
 `
@@ -174,6 +174,7 @@ const BalanceContainer = styled.div`
 
 const PreffixBalance = styled.span`
   font-size: 22px;
+  color: ${(props) => props.theme.color.whiteDoff};
   font-family: 'Bebas Neue', cursive;
   margin-bottom: 3px;
 `
@@ -181,7 +182,7 @@ const PreffixBalance = styled.span`
 const StyledLabel = styled.label`
   padding-left: 10px;
   font-size: 32px;
-  color: ${(props) => props.theme.color.blackDoff};
+  color: ${(props) => props.theme.color.whiteDoff};
   font-family: 'Bebas Neue', cursive;
 `
 
