@@ -61,6 +61,37 @@ export const getFarms = (sushi) => {
     : []
 }
 
+export const getGFINFarms = (sushi) => {
+  return sushi
+    ? sushi.contracts.GFINPools.map(
+        ({
+          pid,
+          name,
+          symbol,
+          icon,
+          tokenAddress,
+          tokenSymbol,
+          tokenContract,
+          lpAddress,
+          lpContract,
+        }) => ({
+          pid,
+          id: symbol,
+          name,
+          lpToken: symbol,
+          lpTokenAddress: lpAddress,
+          lpContract,
+          tokenAddress,
+          tokenSymbol,
+          tokenContract,
+          earnToken: 'GFIN',
+          earnTokenAddress: sushi.contracts.sushi.options.address,
+          icon,
+        }),
+      )
+    : []
+}
+
 export const getPoolWeight = async (masterChefContract, pid) => {
   const { allocPoint } = await masterChefContract.methods.poolInfo(pid).call()
   const totalAllocPoint = await masterChefContract.methods

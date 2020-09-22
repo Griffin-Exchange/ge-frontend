@@ -78,7 +78,7 @@ const Farm: React.FC = () => {
         <Spacer size="lg" />
         <StyledInfo>
           ⭐️ Every time you stake and unstake LP tokens, the contract will
-          automagically harvest GRFN rewards for you!
+          automagically harvest GFIN rewards for you!
         </StyledInfo>
         <Spacer size="lg" />
       </StyledFarm>
@@ -115,7 +115,7 @@ const StyledCardWrapper = styled.div`
 `
 
 const StyledInfo = styled.h3`
-  color: ${(props) => props.theme.color.grey[400]};
+  color: ${(props) => props.theme.color.whiteDoff};
   font-size: 16px;
   font-weight: 400;
   margin: 0;

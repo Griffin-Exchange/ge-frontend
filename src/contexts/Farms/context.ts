@@ -3,6 +3,7 @@ import { FarmsContext } from './types'
 
 const context = createContext<FarmsContext>({
   farms: [],
+  gfinFarms: [],
   unharvested: 0,
 })
 

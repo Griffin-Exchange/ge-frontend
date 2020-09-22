@@ -5,7 +5,7 @@ import useSushi from '../../hooks/useSushi'
 
 import { bnToDec } from '../../utils'
 import { getMasterChefContract, getEarned } from '../../sushi/utils'
-import { getFarms } from '../../sushi/utils'
+import { getFarms, getGFINFarms } from '../../sushi/utils'
 
 import Context from './context'
 import { Farm } from './types'
@@ -17,14 +17,10 @@ const Farms: React.FC = ({ children }) => {
   const { account } = useWallet()
 
   const farms = getFarms(sushi)
+  const gfinFarms = getGFINFarms(sushi)
 
   return (
-    <Context.Provider
-      value={{
-        farms,
-        unharvested,
-      }}
-    >
+    <Context.Provider value={{ gfinFarms, farms, unharvested }}>
       {children}
     </Context.Provider>
   )

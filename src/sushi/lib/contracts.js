@@ -8,6 +8,7 @@ import {
   contractAddresses,
   SUBTRACT_GAS_LIMIT,
   supportedPools,
+  GFINPools,
 } from './constants.js'
 import * as Types from './types.js'
 
@@ -33,6 +34,14 @@ export class Contracts {
         tokenContract: new this.web3.eth.Contract(ERC20Abi),
       }),
     )
+    this.GFINPools = GFINPools.map((pool) =>
+      Object.assign(pool, {
+        lpAddress: pool.lpAddresses[networkId],
+        tokenAddress: pool.tokenAddresses[networkId],
+        lpContract: new this.web3.eth.Contract(UNIV2PairAbi),
+        tokenContract: new this.web3.eth.Contract(ERC20Abi),
+      }),
+    )
 
     this.setProvider(provider, networkId)
     this.setDefaultAccount(this.web3.eth.defaultAccount)
@@ -50,6 +59,12 @@ export class Contracts {
     setProvider(this.weth, contractAddresses.weth[networkId])
 
     this.pools.forEach(
+      ({ lpContract, lpAddress, tokenContract, tokenAddress }) => {
+        setProvider(lpContract, lpAddress)
+        setProvider(tokenContract, tokenAddress)
+      },
+    )
+    this.GFINPools.forEach(
       ({ lpContract, lpAddress, tokenContract, tokenAddress }) => {
         setProvider(lpContract, lpAddress)
         setProvider(tokenContract, tokenAddress)

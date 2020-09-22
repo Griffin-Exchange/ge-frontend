@@ -111,7 +111,9 @@ const StyledButton = styled.button<StyledButtonProps>`
   box-shadow: ${(props) => props.boxShadow};
   font-family: 'Bebas Neue', cursive;
   color: ${(props) =>
-    !props.disabled ? props.theme.color.whiteDoff : `${props.color}55`};
+    !props.disabled
+      ? props.theme.color.whiteDoff
+      : `${props.theme.color.whiteDoff}55`};
   cursor: pointer;
   display: flex;
   font-size: ${(props) => props.fontSize}px;
@@ -125,7 +127,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   pointer-events: ${(props) => (!props.disabled ? undefined : 'none')};
   width: 100%;
   &:hover {
-    background-color: ${(props) => props.theme.color.grey[100]};
+    background-color: #1b1b1b;
   }
 `
 

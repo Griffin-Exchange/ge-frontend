@@ -17,7 +17,7 @@ const Home: React.FC = () => {
         <PageHeader
           icon={<img src={griffin} height={200} />}
           title="GRIFFIN EXCHANGE"
-          subtitle="Stake Uniswap LP tokens to claim your very own GRFN Tokens!"
+          subtitle="Stake Uniswap LP tokens to claim your very own GFIN Tokens!"
         />
 
         <Container>
@@ -25,7 +25,7 @@ const Home: React.FC = () => {
         </Container>
         <Spacer size="lg" />
         <StyledInfo>
-          🏆<b>Pro Tip</b>: GRFN-ETH UNI-V2 LP token pool yields TWICE more
+          🏆<b>Pro Tip</b>: GFIN-ETH UNI-V2 LP token pool yields TWICE more
           token rewards per block.
         </StyledInfo>
         <Spacer size="lg" />

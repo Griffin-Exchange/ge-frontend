@@ -15,6 +15,7 @@ export interface Farm {
 }
 
 export interface FarmsContext {
+  gfinFarms: Farm[]
   farms: Farm[]
   unharvested: number
 }

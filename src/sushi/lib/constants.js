@@ -68,6 +68,22 @@ UNI-V2 LP Address on mainnet for reference
 12 SUSHI 0xce84867c3c02b05dc570d0135103d3fb9cc19433
 */
 
+export const GFINPools = [
+  {
+    pid: 12,
+    lpAddresses: {
+      1: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
+    },
+    tokenAddresses: {
+      1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+    },
+    name: 'Sushi Party!',
+    symbol: 'SUSHI-ETH UNI-V2 LP',
+    tokenSymbol: 'SUSHI',
+    icon: '🍣',
+  },
+]
+
 export const supportedPools = [
   {
     pid: 12,

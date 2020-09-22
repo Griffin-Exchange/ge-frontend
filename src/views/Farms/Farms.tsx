@@ -31,10 +31,10 @@ const Farms: React.FC = () => {
                 <Route exact path={path}>
                   <PageHeader
                     icon={<img src={griffin} height="120" />}
-                    subtitle="Earn GRFN tokens by staking Uniswap V2 LP Tokens."
+                    subtitle="Earn GFIN tokens by staking Uniswap V2 LP Tokens."
                     title="Select Your Favorite Dishes"
                   />
-                  <FarmCards />
+                  <FarmCards type="gfin" />
                 </Route>
                 <Route path={`${path}/:farmId`}>
                   <Farm />

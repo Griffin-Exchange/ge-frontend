@@ -22,8 +22,12 @@ interface FarmWithStakedValue extends Farm, StakedValue {
   apy: BigNumber
 }
 
-const FarmCards: React.FC = () => {
-  const [farms] = useFarms()
+interface FarmCards {
+  type: string
+}
+
+const FarmCards: React.FC<FarmCards> = ({ type }) => {
+  const [farms, gfinFarms] = useFarms()
   const { account } = useWallet()
   const stakedValue = useAllStakedValue()
 
@@ -31,9 +35,18 @@ const FarmCards: React.FC = () => {
     ({ tokenSymbol }) => tokenSymbol === 'SUSHI',
   )
 
+  const gfinIndex = gfinFarms.findIndex(
+    ({ tokenSymbol }) => tokenSymbol === 'GFIN',
+  )
+
   const sushiPrice =
     sushiIndex >= 0 && stakedValue[sushiIndex]
       ? stakedValue[sushiIndex].tokenPriceInWeth
+      : new BigNumber(0)
+
+  const gfinPrice =
+    gfinIndex >= 0 && stakedValue[gfinIndex]
+      ? stakedValue[gfinIndex].tokenPriceInWeth
       : new BigNumber(0)
 
   const BLOCKS_PER_YEAR = new BigNumber(2336000)
@@ -62,10 +75,33 @@ const FarmCards: React.FC = () => {
     },
     [[]],
   )
+  const gfinRows = gfinFarms.reduce<FarmWithStakedValue[][]>(
+    (farmRows, farm, i) => {
+      const farmWithStakedValue = {
+        ...farm,
+        ...stakedValue[i],
+        apy: stakedValue[i]
+          ? gfinPrice
+              .times(SUSHI_PER_BLOCK)
+              .times(BLOCKS_PER_YEAR)
+              .times(stakedValue[i].poolWeight)
+              .div(stakedValue[i].totalWethValue)
+          : null,
+      }
+      const newFarmRows = [...farmRows]
+      if (newFarmRows[newFarmRows.length - 1].length === 3) {
+        newFarmRows.push([farmWithStakedValue])
+      } else {
+        newFarmRows[newFarmRows.length - 1].push(farmWithStakedValue)
+      }
+      return newFarmRows
+    },
+    [[]],
+  )
 
   return (
     <StyledCards>
-      {!!rows[0].length ? (
+      {!!rows[0].length && type === 'sushi' ? (
         rows.map((farmRow, i) => (
           <StyledRow key={i}>
             {farmRow.map((farm, j) => (
@@ -76,9 +112,24 @@ const FarmCards: React.FC = () => {
             ))}
           </StyledRow>
         ))
+      ) : !!gfinRows[0].length && type === 'gfin' ? (
+        gfinRows.map((grfnRow, i) => (
+          <StyledRow key={i}>
+            {grfnRow.map((farm, j) => (
+              <React.Fragment key={j}>
+                <FarmCard farm={farm} />
+                {(j === 0 || j === 1) && <StyledSpacer />}
+              </React.Fragment>
+            ))}
+          </StyledRow>
+        ))
       ) : (
         <StyledLoadingWrapper>
-          <Loader text="Cooking the rice ..." />
+          {type === 'sushi' ? (
+            <Loader text="Cooking the rice..." />
+          ) : (
+            <Loader text="Griffin's warming up..." />
+          )}
         </StyledLoadingWrapper>
       )}
     </StyledCards>
