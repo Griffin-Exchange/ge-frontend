@@ -14,7 +14,7 @@ import Harvest from './components/Harvest'
 import Stake from './components/Stake'
 
 const Farm: React.FC = () => {
-  const { farmId } = useParams()
+  const { farmId, type } = useParams()
   const {
     pid,
     lpToken,
@@ -23,7 +23,7 @@ const Farm: React.FC = () => {
     earnToken,
     name,
     icon,
-  } = useFarm(farmId) || {
+  } = useFarm(farmId, type) || {
     pid: 0,
     lpToken: '',
     lpTokenAddress: '',
@@ -35,6 +35,7 @@ const Farm: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    console.log(farmId)
   }, [])
 
   const sushi = useSushi()

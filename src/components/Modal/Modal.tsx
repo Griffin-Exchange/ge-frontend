@@ -30,9 +30,11 @@ const StyledResponsiveWrapper = styled.div`
   position: relative;
   width: 100%;
   max-width: 512px;
+  z-index: 2 !important;
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}px) {
     flex: 1;
     position: absolute;
+    z-index: 2;
     top: 100%;
     right: 0;
     left: 0;
@@ -52,6 +54,7 @@ const StyledModal = styled.div`
   position: relative;
   width: 100%;
   min-height: 0;
+  z-index: 3 !important;
 `
 
 const StyledModalContent = styled.div``

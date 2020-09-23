@@ -106,7 +106,7 @@ const FarmCards: React.FC<FarmCards> = ({ type }) => {
           <StyledRow key={i}>
             {farmRow.map((farm, j) => (
               <React.Fragment key={j}>
-                <FarmCard farm={farm} />
+                <FarmCard type={type} farm={farm} />
                 {(j === 0 || j === 1) && <StyledSpacer />}
               </React.Fragment>
             ))}
@@ -117,7 +117,7 @@ const FarmCards: React.FC<FarmCards> = ({ type }) => {
           <StyledRow key={i}>
             {grfnRow.map((farm, j) => (
               <React.Fragment key={j}>
-                <FarmCard farm={farm} />
+                <FarmCard type={type} farm={farm} />
                 {(j === 0 || j === 1) && <StyledSpacer />}
               </React.Fragment>
             ))}
@@ -138,9 +138,10 @@ const FarmCards: React.FC<FarmCards> = ({ type }) => {
 
 interface FarmCardProps {
   farm: FarmWithStakedValue
+  type: string
 }
 
-const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
+const FarmCard: React.FC<FarmCardProps> = ({ farm, type }) => {
   const [startTime, setStartTime] = useState(0)
   const [harvestable, setHarvestable] = useState(0)
 
@@ -179,7 +180,9 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 
   return (
     <StyledCardWrapper>
-      {farm.tokenSymbol === 'SUSHI' && <StyledCardAccent />}
+      {(farm.tokenSymbol === 'SUSHI' || farm.tokenSymbol === 'GFIN') && (
+        <StyledCardAccent />
+      )}
       <CardFarm>
         <CardContent>
           <StyledContent>
@@ -193,7 +196,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
             <Button
               disabled={!poolActive}
               text={poolActive ? 'Select' : undefined}
-              to={`/farms/${farm.id}`}
+              to={`/farms/${type}/${farm.id}`}
             >
               {!poolActive && (
                 <Countdown
@@ -240,7 +243,7 @@ const CardFarm = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  z-index: 1;
+  z-index: 0;
 `
 
 const RainbowLight = keyframes`
