@@ -1,9 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useWallet } from 'use-wallet'
 import styled from 'styled-components'
 import AccountButton from '../components/AccountButton'
 
 const Nav: React.FC = () => {
+  const { account } = useWallet()
+
   return (
     <StyledNav>
       <StyledLink exact activeClassName="active" to="/">
@@ -21,6 +24,20 @@ const Nav: React.FC = () => {
       >
         Exchange
       </StyledAbsoluteLink>
+      {!!account && (
+        <>
+          <StyledLink exact activeClassName="active" to="/topup">
+            Top Up
+          </StyledLink>
+          <StyledAbsoluteLink
+            href="https://snapshot.page/#/sushi"
+            target="_blank"
+          >
+            Gov
+          </StyledAbsoluteLink>
+        </>
+      )}
+
       <StyledAccountButtonWrapper>
         <AccountButton />
       </StyledAccountButtonWrapper>
