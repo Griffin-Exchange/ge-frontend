@@ -10,6 +10,8 @@ import useEarnings from '../../../hooks/useEarnings'
 import useReward from '../../../hooks/useReward'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 
+import griffin from '../../../assets/img/griffin.png'
+
 interface HarvestProps {
   pid: number
 }
@@ -24,7 +26,9 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
-            <CardIcon>🍣</CardIcon>
+            <CardIcon>
+              <img src={griffin} height="45" alt="griffin-logo" />
+            </CardIcon>
             <Value value={getBalanceNumber(earnings)} />
             <Label text="GFIN Earned" />
           </StyledCardHeader>

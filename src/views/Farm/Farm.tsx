@@ -35,7 +35,6 @@ const Farm: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    console.log(farmId)
   }, [])
 
   const sushi = useSushi()

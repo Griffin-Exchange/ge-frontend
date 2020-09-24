@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import griffin from '../../assets/img/griffin.png'
 import background from '../../assets/img/background-03.png'
 
-import { useParams } from 'react-router-dom'
 import { useWallet } from 'use-wallet'
 import { provider } from 'web3-core'
 
@@ -14,13 +13,10 @@ import WalletProviderModal from '../../components/WalletProviderModal'
 
 import useModal from '../../hooks/useModal'
 
-import useSushi from '../../hooks/useSushi'
 import useFarm from '../../hooks/useFarm'
-import useRedeem from '../../hooks/useRedeem'
 import { getContract } from '../../utils/erc20'
-import { getMasterChefContract } from '../../sushi/utils'
+import { GFINPools } from '../../sushi/lib/constants'
 
-import Harvest from './components/Harvest'
 import Stake from './components/Stake'
 
 const Farm: React.FC = () => {
@@ -31,22 +27,11 @@ const Farm: React.FC = () => {
     window.scrollTo(0, 0)
   }, [])
 
-  const sushi = useSushi()
   const { ethereum } = useWallet()
 
-  // const lpContract = useMemo(() => {
-  //   return getContract(ethereum as provider, lpTokenAddress)
-  // }, [ethereum, lpTokenAddress])
-
-  // const { onRedeem } = useRedeem(getMasterChefContract(sushi))
-
-  // const lpTokenName = useMemo(() => {
-  //   return lpToken.toUpperCase()
-  // }, [lpToken])
-
-  // const earnTokenName = useMemo(() => {
-  //   return earnToken.toUpperCase()
-  // }, [earnToken])
+  const lpContract = useMemo(() => {
+    return getContract(ethereum as provider, GFINPools[0].lpAddresses[1])
+  }, [ethereum, GFINPools[0].lpAddresses[1]])
 
   return (
     <>
@@ -56,11 +41,21 @@ const Farm: React.FC = () => {
           <>
             <PageHeader
               icon={<img src={griffin} height="120" />}
-              title="Stake Sushi Tokens & Earn Fees"
-              subtitle="0.05% of all SushiSwap trades are rewarded to GFIN stakers"
+              title="Stake Griffin Tokens & Earn Fees"
+              subtitle="0.05% of all GriffinSwap trades are rewarded to GFIN stakers"
             />
             {/* <FarmCards /> */}
-            <div>TBD</div>
+            {/* <div>TBD</div> */}
+
+            <StyledCardsWrapper>
+              <StyledCardWrapper>
+                <Stake
+                  lpContract={lpContract}
+                  pid={GFINPools[0].pid}
+                  tokenName={GFINPools[0].symbol.toUpperCase()}
+                />
+              </StyledCardWrapper>
+            </StyledCardsWrapper>
           </>
         ) : (
           <div
