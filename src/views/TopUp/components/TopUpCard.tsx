@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useWallet } from 'use-wallet'
 
 import styled, { keyframes } from 'styled-components'
 import CardIcon from '../../../components/CardIcon'
@@ -8,13 +9,14 @@ import CardContent from '../../../components/CardContent'
 import griffin from '../../../assets/img/griffin.png'
 
 const TopUpCards: React.FC = () => {
+  const { account } = useWallet()
   const [amount, setAmount] = useState('')
 
   return (
     <Container>
       <StyledCards>
         <TopUpCardContainer
-          wallet={'0x01010101010'}
+          wallet={account || '0x01010101010'}
           amount={amount}
           setAmount={(e: any) => setAmount(e)}
         />
@@ -89,7 +91,7 @@ const CardFarm = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  z-index: 1;
+  z-index: 0;
 `
 
 const StyledTitle = styled.h1`
