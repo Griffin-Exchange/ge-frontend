@@ -7,10 +7,26 @@ import Button from '../../../components/Button'
 import CardContent from '../../../components/CardContent'
 
 import griffin from '../../../assets/img/griffin.png'
+import { fetchData } from '../../../utils'
 
 const TopUpCards: React.FC = () => {
   const { account } = useWallet()
   const [amount, setAmount] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handlePay = (input: any) => {
+    setIsLoading(true)
+    console.log('input', input)
+    fetchData('/invoices', 'POST', { amount: input })
+      .then((val) => {
+        setIsLoading(false)
+        window.open(val.data.invoice_url)
+      })
+      .catch((err) => {
+        setIsLoading(false)
+        alert(err)
+      })
+  }
 
   return (
     <Container>
@@ -19,6 +35,8 @@ const TopUpCards: React.FC = () => {
           wallet={account || '0x01010101010'}
           amount={amount}
           setAmount={(e: any) => setAmount(e)}
+          isLoading={isLoading}
+          handlePay={handlePay}
         />
       </StyledCards>
     </Container>
@@ -29,12 +47,16 @@ interface TopUpCardProps {
   wallet: String
   amount: any
   setAmount: any
+  isLoading: Boolean
+  handlePay: Function
 }
 
 const TopUpCardContainer: React.FC<TopUpCardProps> = ({
   wallet,
   amount,
   setAmount,
+  isLoading,
+  handlePay,
 }) => {
   return (
     <StyledCardWrapper>
@@ -69,7 +91,7 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
               <span>{wallet}</span>
             </StyledInsight>
             <StyledSpacer />
-            <Button text="TOP UP NOW!" />
+            <Button onClick={() => handlePay(amount)} text="TOP UP NOW!" />
           </StyledContent>
         </CardContent>
       </CardFarm>
