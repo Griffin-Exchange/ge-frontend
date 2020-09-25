@@ -5,13 +5,14 @@ import styled, { keyframes } from 'styled-components'
 import CardIcon from '../../../components/CardIcon'
 import Button from '../../../components/Button'
 import CardContent from '../../../components/CardContent'
+import Loader from '../../../components/Loader'
 
 import griffin from '../../../assets/img/griffin.png'
 import { fetchData } from '../../../utils'
 
 const TopUpCards: React.FC = () => {
   const { account } = useWallet()
-  const [amount, setAmount] = useState('')
+  const [amount, setAmount] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
   const handlePay = (input: any) => {
@@ -19,6 +20,7 @@ const TopUpCards: React.FC = () => {
     console.log('input', input)
     fetchData('/invoices', 'POST', { amount: input })
       .then((val) => {
+        setAmount(null)
         setIsLoading(false)
         window.open(val.data.invoice_url)
       })
@@ -73,6 +75,7 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
               <span style={{ color: '#fc8a58', fontWeight: 'bold' }}>USD</span>
               <input
                 value={amount}
+                placeholder="0"
                 onChange={(e) => setAmount(e.target.value)}
                 style={{
                   direction: 'rtl',
@@ -91,7 +94,11 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
               <span>{wallet}</span>
             </StyledInsight>
             <StyledSpacer />
-            <Button onClick={() => handlePay(amount)} text="TOP UP NOW!" />
+            {!isLoading ? (
+              <Button onClick={() => handlePay(amount)} text="TOP UP NOW!" />
+            ) : (
+              <Loader text="Loading" />
+            )}
           </StyledContent>
         </CardContent>
       </CardFarm>
