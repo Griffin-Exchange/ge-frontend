@@ -80,7 +80,7 @@ export const GFINPools = [
     name: 'Sushi Party!',
     symbol: 'SUSHI-ETH UNI-V2 LP',
     tokenSymbol: 'SUSHI',
-    icon: '🍣',
+    icon: 'gfin-eth.png',
   },
   {
     pid: 1,
@@ -93,7 +93,7 @@ export const GFINPools = [
     name: 'Tether Turtle',
     symbol: 'USDT-ETH UNI-V2 LP',
     tokenSymbol: 'USDT',
-    icon: '🐢',
+    icon: 'usdt-eth.png',
   },
   {
     pid: 2,
@@ -106,7 +106,7 @@ export const GFINPools = [
     name: 'Circle Snail',
     symbol: 'USDC-ETH UNI-V2 LP',
     tokenSymbol: 'USDC',
-    icon: '🐌',
+    icon: 'usdc-eth.png',
   },
   {
     pid: 3,
@@ -119,7 +119,7 @@ export const GFINPools = [
     name: 'Donald DAI',
     symbol: 'DAI-ETH UNI-V2 LP',
     tokenSymbol: 'DAI',
-    icon: '🦆',
+    icon: 'dai-eth.png',
   },
   {
     pid: 4,
@@ -132,7 +132,7 @@ export const GFINPools = [
     name: 'Spartan Dollar',
     symbol: 'SUSD-ETH UNI-V2 LP',
     tokenSymbol: 'SUSD',
-    icon: '🦍',
+    icon: 'susd-eth.png',
   },
   {
     pid: 5,
@@ -145,7 +145,7 @@ export const GFINPools = [
     name: 'REN Rhino',
     symbol: 'renBTC-ETH UNI-V2 LP',
     tokenSymbol: 'renBTC',
-    icon: '🦏',
+    icon: 'renbtc-eth.png',
   },
   {
     pid: 6,
@@ -158,7 +158,7 @@ export const GFINPools = [
     name: 'Puzzle BTC',
     symbol: 'wBTC-ETH UNI-V2 LP',
     tokenSymbol: 'wBTC',
-    icon: '🧩',
+    icon: 'wbtc-eth.png',
   },
 ]
 
@@ -174,7 +174,7 @@ export const supportedPools = [
     name: 'Sushi Party!',
     symbol: 'SUSHI-ETH SUSHI LP',
     tokenSymbol: 'SUSHI',
-    icon: '🍣',
+    icon: 'gfin-eth.png',
   },
   {
     pid: 1,
@@ -187,7 +187,7 @@ export const supportedPools = [
     name: 'Tether Turtle',
     symbol: 'USDT-ETH SUSHI LP',
     tokenSymbol: 'USDT',
-    icon: '🐢',
+    icon: 'usdt-eth.png',
   },
   {
     pid: 2,
@@ -200,7 +200,7 @@ export const supportedPools = [
     name: 'Circle Snail',
     symbol: 'USDC-ETH SUSHI LP',
     tokenSymbol: 'USDC',
-    icon: '🐌',
+    icon: 'usdc-eth.png',
   },
   {
     pid: 3,
@@ -213,7 +213,7 @@ export const supportedPools = [
     name: 'Donald DAI',
     symbol: 'DAI-ETH SUSHI LP',
     tokenSymbol: 'DAI',
-    icon: '🦆',
+    icon: 'dai-eth.png',
   },
   {
     pid: 3,
@@ -226,7 +226,7 @@ export const supportedPools = [
     name: 'Spartan Dollar',
     symbol: 'SUSD-ETH SUSHI LP',
     tokenSymbol: 'SUSD',
-    icon: '🦍',
+    icon: 'susd-eth.png',
   },
   {
     pid: 4,
@@ -239,7 +239,7 @@ export const supportedPools = [
     name: 'REN Rhino',
     symbol: 'renBTC-ETH SUSHI LP',
     tokenSymbol: 'renBTC',
-    icon: '🦏',
+    icon: 'renbtc-eth.png',
   },
   {
     pid: 5,
@@ -252,6 +252,6 @@ export const supportedPools = [
     name: 'Puzzle BTC',
     symbol: 'WBTC-ETH UNI-V2 LP',
     tokenSymbol: 'wBTC',
-    icon: '🧩',
+    icon: 'wbtc-eth.png',
   },
 ]
