@@ -186,7 +186,13 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, type }) => {
       <CardFarm>
         <CardContent>
           <StyledContent>
-            <CardIcon>{farm.icon}</CardIcon>
+            {/* <CardIcon> */}
+            <img
+              src={require(`../../../assets/img/icon-pools/${farm.icon}`)}
+              height="100"
+              alt={farm.tokenSymbol}
+            />
+            {/* </CardIcon> */}
             <StyledTitle>{farm.name}</StyledTitle>
             <StyledDetails>
               <StyledDetail>Deposit {farm.lpToken.toUpperCase()}</StyledDetail>
