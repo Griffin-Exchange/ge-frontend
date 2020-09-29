@@ -35,6 +35,9 @@ const Nav: React.FC = () => {
           >
             Gov
           </StyledAbsoluteLink>
+          <StyledLink exact activeClassName="active" to="/boost">
+            Boost
+          </StyledLink>
         </>
       )}
 

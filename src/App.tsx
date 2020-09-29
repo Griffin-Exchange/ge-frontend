@@ -15,6 +15,7 @@ import Farms from './views/Farms'
 import Home from './views/Home'
 import Stake from './views/Stake'
 import TopUp from './views/TopUp'
+import Boost from './views/Boost'
 
 const App: React.FC = () => {
   const [mobileMenu, setMobileMenu] = useState(false)
@@ -44,6 +45,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/topup">
             <TopUp />
+          </Route>
+          <Route path="/boost">
+            <Boost />
           </Route>
         </Switch>
       </Router>
