@@ -66,6 +66,7 @@ const TopUpCards: React.FC = () => {
         if (i.name === 'eth') {
           return (
             <div>
+              {console.log(wallet.account, ':', wallet.balance)}
               {i.name}: {wallet.balance}
             </div>
           )
