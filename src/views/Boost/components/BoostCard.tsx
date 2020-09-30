@@ -6,6 +6,7 @@ import CardIcon from '../../../components/CardIcon'
 import Button from '../../../components/Button'
 import CardContent from '../../../components/CardContent'
 import Loader from '../../../components/Loader'
+import Spacer from '../../../components/Spacer'
 
 import useTokenBalance from '../../../hooks/useTokenBalance'
 import { getBalanceNumber } from '../../../utils/formatBalance'
@@ -13,24 +14,71 @@ import { getBalanceNumber } from '../../../utils/formatBalance'
 import griffin from '../../../assets/img/griffin.png'
 import { fetchData } from '../../../utils'
 
+const currency = [
+  {
+    name: 'USDT',
+    status: false,
+  },
+  {
+    name: 'USDC',
+    status: false,
+  },
+  {
+    name: 'ETH',
+    status: false,
+  },
+  {
+    name: 'DAI',
+    status: false,
+  },
+  {
+    name: 'wBTC',
+    status: false,
+  },
+  {
+    name: 'renBTC',
+    status: false,
+  },
+  {
+    name: 'GFIN',
+    status: false,
+  },
+]
+
 const TopUpCards: React.FC = () => {
   const wallet = useWallet()
   const [amount, setAmount] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [optionCurrency, setOptionCurrency] = useState(currency)
+  const [step, setStep] = useState(true)
 
   const handlePay = (input: any) => {
-    setIsLoading(true)
-    console.log('input', input)
-    fetchData('/invoices', 'POST', { amount: input })
-      .then((val) => {
-        setAmount(null)
-        setIsLoading(false)
-        window.open(val.data.invoice_url)
-      })
-      .catch((err) => {
-        setIsLoading(false)
-        alert(err)
-      })
+    const optionArray = optionCurrency.filter((d) => d.status === true)
+
+    if (step && optionArray.length > 0) {
+      setStep(false)
+    } else {
+      // setIsLoading(true)
+      // console.log('input', input)
+      // fetchData('/invoices', 'POST', { amount: input })
+      //   .then((val) => {
+      //     setAmount(null)
+      //     setIsLoading(false)
+      //     window.open(val.data.invoice_url)
+      //   })
+      //   .catch((err) => {
+      //     setIsLoading(false)
+      //     alert(err)
+      //   })
+    }
+  }
+
+  const handleOptionCurrencyChanged = (index: any) => {
+    console.log('index: ' + index)
+    let newArr = [...optionCurrency]
+    newArr[index].status = !newArr[index].status
+
+    setOptionCurrency(newArr)
   }
 
   return (
@@ -48,6 +96,10 @@ const TopUpCards: React.FC = () => {
           setAmount={(e: any) => setAmount(e)}
           isLoading={isLoading}
           handlePay={handlePay}
+          optionCurrency={optionCurrency}
+          handleOptionCurrency={handleOptionCurrencyChanged}
+          step={step}
+          setStep={setStep}
         />
       </StyledCards>
     </Container>
@@ -60,6 +112,10 @@ interface TopUpCardProps {
   setAmount: any
   isLoading: Boolean
   handlePay: Function
+  optionCurrency: any
+  handleOptionCurrency: Function
+  step: Boolean
+  setStep: Function
 }
 
 const TopUpCardContainer: React.FC<TopUpCardProps> = ({
@@ -68,6 +124,10 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
   setAmount,
   isLoading,
   handlePay,
+  optionCurrency,
+  handleOptionCurrency,
+  step,
+  setStep,
 }) => {
   return (
     <StyledCardWrapper>
@@ -78,33 +138,168 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
             <img src={griffin} height="45" alt="griffin-logo" />
           </CardIcon>
           <StyledContent>
-            <StyledTitle>Top Up and get more Griffin Token</StyledTitle>
+            <StyledTitle>
+              Boost Performance By Moving
+              <br />
+              Your Token To State Channel
+            </StyledTitle>
             <StyledSpacer />
-            <StyledInsight>
-              <span style={{ color: '#fc8a58', fontWeight: 'bold' }}>USD</span>
-              <input
-                value={amount}
-                placeholder="0"
-                onChange={(e) => setAmount(e.target.value)}
-                style={{
-                  direction: 'rtl',
-                  background: 'transparent',
-                  outline: 'none',
-                  border: 0,
-                  color: '#fff',
-                  width: 'inherit',
-                }}
-              />
-            </StyledInsight>
             <StyledInsight>
               <span style={{ color: '#fc8a58', fontWeight: 'bold' }}>
                 ADDRESS
               </span>
               <span>{wallet}</span>
             </StyledInsight>
+            <Spacer />
+            {!step ? (
+              <RowSpaceBetween>
+                <span
+                  style={{
+                    color: '#fff',
+                    fontWeight: 'bold',
+                    marginTop: '10px',
+                    marginRight: '10px',
+                  }}
+                >
+                  Wallet
+                </span>
+                <span
+                  style={{
+                    color: '#fff',
+                    fontWeight: 'bold',
+                    marginTop: '10px',
+                    marginRight: '10px',
+                  }}
+                >
+                  State Channel
+                </span>
+              </RowSpaceBetween>
+            ) : (
+              <></>
+            )}
+            {!step ? (
+              optionCurrency.map((data: any, index: any) =>
+                data.status === true ? (
+                  <RowSpaceBetween>
+                    <span
+                      style={{
+                        color: '#fc8a58',
+                        fontWeight: 'bold',
+                        marginTop: '10px',
+                        marginRight: '10px',
+                      }}
+                    >
+                      {data.name}
+                    </span>
+                    <StyledFinance>
+                      <input
+                        value={amount}
+                        placeholder="0"
+                        onChange={(e) => setAmount(e.target.value)}
+                        style={{
+                          direction: 'rtl',
+                          background: 'transparent',
+                          outline: 'none',
+                          border: 0,
+                          color: '#fff',
+                          width: 'inherit',
+                        }}
+                        readOnly
+                      />
+                    </StyledFinance>
+                    <span
+                      style={{
+                        color: '#fc8a58',
+                        fontWeight: 'bold',
+                        margin: '10px 15px 0px 15px',
+                      }}
+                    >
+                      &gt;
+                    </span>
+                    <StyledFinance>
+                      <input
+                        value={amount}
+                        placeholder="0"
+                        onChange={(e) => setAmount(e.target.value)}
+                        style={{
+                          direction: 'rtl',
+                          background: 'transparent',
+                          outline: 'none',
+                          border: 0,
+                          color: '#fff',
+                          width: 'inherit',
+                        }}
+                      />
+                    </StyledFinance>
+                    <span
+                      style={{
+                        color: '#fc8a58',
+                        fontWeight: 'bold',
+                        margin: '10px 15px 0px 15px',
+                      }}
+                    >
+                      &gt;
+                    </span>
+                    <StyledFinance>
+                      <input
+                        value={amount}
+                        placeholder="0"
+                        onChange={(e) => setAmount(e.target.value)}
+                        style={{
+                          direction: 'rtl',
+                          background: 'transparent',
+                          outline: 'none',
+                          border: 0,
+                          color: '#fff',
+                          width: 'inherit',
+                        }}
+                        readOnly
+                      />
+                    </StyledFinance>
+                  </RowSpaceBetween>
+                ) : (
+                  <></>
+                ),
+              )
+            ) : (
+              <></>
+            )}
+            <Spacer />
+            {step ? (
+              <WrapContainer>
+                {optionCurrency.map((data: any, index: any) => (
+                  <ButtonCurrency
+                    key={index}
+                    style={
+                      data.status
+                        ? { background: '#fc8a58', color: '#282828' }
+                        : {}
+                    }
+                    onClick={() => handleOptionCurrency(index)}
+                  >
+                    {data.name}
+                  </ButtonCurrency>
+                ))}
+              </WrapContainer>
+            ) : (
+              <></>
+            )}
             <StyledSpacer />
             {!isLoading ? (
-              <Button onClick={() => handlePay(amount)} text="TOP UP NOW!" />
+              <>
+                {!step ? (
+                  <>
+                    <Button onClick={() => setStep(true)} text="CANCEL" />
+                    <Spacer />
+                  </>
+                ) : (
+                  <></>
+                )}
+                <Button
+                  onClick={() => handlePay(amount)}
+                  text={step ? 'NEXT' : 'EXECUTE'}
+                />
+              </>
             ) : (
               <Loader text="Loading" />
             )}
@@ -122,6 +317,55 @@ const Container = styled.div`
   justify-content: 'center';
 `
 
+const RowSpaceBetween = styled.div`
+  width: 100%;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const Row = styled.div`
+  line-height: 32px;
+  text-align: center;
+  vertical-align: middle;
+  letter-spacing: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`
+const WrapContainer = styled.div`
+  width: 600px;
+  text-align: center;
+  vertical-align: middle;
+  letter-spacing: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+`
+
+const ButtonCurrency = styled.div`
+  box-shadow: 4px 4px 8px #1b1b1b, -8px -8px 16px #353535;
+  background: ${(props) => props.theme.color.blackDoff};
+  font-family: 'Bebas Neue', cursive;
+  color: ${(props) => props.theme.color.whiteDoff};
+  border-radius: 12px;
+  line-height: 32px;
+  font-size: 18px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px 15px 5px 20px;
+  &:hover {
+    background-color: #1b1b1b;
+  }
+  cursor: pointer;
+  margin: 10px;
+`
+
 const CardFarm = styled.div`
   background: ${(props) => props.theme.color.blackDoff};
   border-radius: 12px;
@@ -135,6 +379,7 @@ const CardFarm = styled.div`
 const StyledTitle = styled.h1`
   font-family: 'Bebas Neue', cursive;
   color: ${(props) => props.theme.color.whiteDoff};
+  text-align: center;
   font-size: 36px;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -183,7 +428,7 @@ const StyledCardAccent = styled.div`
 `
 
 const StyledCards = styled.div`
-  width: 900px;
+  width: 100%;
   display: flex;
   justify-content: center;
   padding-bottom: ${(props) => props.theme.spacing[6]}px;
@@ -224,9 +469,27 @@ const StyledInsight = styled.div`
   margin-top: 12px;
   line-height: 32px;
   font-size: 13px;
-  box-shadow: inset 3px 3px 7px 0 #1b1b1b, inset -6px -6px 10px 0 #353535;
   text-align: center;
   padding: 10px 15px;
+  letter-spacing: 3px;
+  box-shadow: inset 3px 3px 7px 0 #1b1b1b, inset -6px -6px 10px 0 #353535;
+`
+
+const StyledFinance = styled.div`
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: #282828;
+  color: #fff;
+  width: 100%;
+  margin-top: 12px;
+  line-height: 32px;
+  font-size: 13px;
+  box-shadow: inset 3px 3px 7px 0 #1b1b1b, inset -6px -6px 10px 0 #353535;
+  padding: 10px 12px;
+  text-align: center;
   letter-spacing: 3px;
 `
 

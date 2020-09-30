@@ -1,12 +1,18 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import background from '../../assets/img/background-01.png'
+import { useWallet } from 'use-wallet'
 
+import Button from '../../components/Button'
 import Page from '../../components/Page'
-
+import WalletProviderModal from '../../components/WalletProviderModal'
 import BoostCard from './components/BoostCard'
 
+import useModal from '../../hooks/useModal'
+
 const Farm: React.FC = () => {
+  const { account } = useWallet()
+  const [onPresentWalletProviderModal] = useModal(<WalletProviderModal />)
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -14,7 +20,23 @@ const Farm: React.FC = () => {
     <>
       <StyledBackground />
       <Page>
-        <BoostCard />
+        {!!account ? (
+          <BoostCard />
+        ) : (
+          <div
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              flex: 1,
+              justifyContent: 'center',
+            }}
+          >
+            <Button
+              onClick={onPresentWalletProviderModal}
+              text="🔓 Unlock Wallet"
+            />
+          </div>
+        )}
       </Page>
     </>
   )
