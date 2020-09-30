@@ -63,7 +63,7 @@ const TopUpCards: React.FC = () => {
         />
       </StyledCards>
       {boostListToken.map((i) => {
-        if (i.name === 'eth') {
+        if (i.id === 'eth') {
           return (
             <div>
               {console.log(wallet.account, ':', wallet.balance)}
