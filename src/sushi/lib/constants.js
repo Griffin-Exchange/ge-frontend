@@ -255,3 +255,35 @@ export const supportedPools = [
     icon: 'wbtc-eth.png',
   },
 ]
+
+export const boostListToken = [
+  {
+    id: 'eth',
+    name: 'ETH',
+  },
+  {
+    id: 'usdt',
+    name: 'USDT',
+    tokenAddress: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+  },
+  {
+    id: 'usdc',
+    name: 'USDC',
+    tokenAddress: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+  },
+  {
+    id: 'dai',
+    name: 'DAI',
+    tokenAddress: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+  },
+  {
+    id: 'wbtc',
+    name: 'wBTC',
+    tokenAddress: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
+  },
+  {
+    id: 'renbtc',
+    name: 'renBTC',
+    tokenAddress: '0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D',
+  },
+]

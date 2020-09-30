@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useWallet } from 'use-wallet'
 
 import styled, { keyframes } from 'styled-components'
@@ -13,10 +13,28 @@ import { getBalanceNumber } from '../../../utils/formatBalance'
 import griffin from '../../../assets/img/griffin.png'
 import { fetchData } from '../../../utils'
 
+import { boostListToken } from '../../../sushi/lib/constants'
+
 const TopUpCards: React.FC = () => {
   const wallet = useWallet()
   const [amount, setAmount] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+
+  // useEffect(() => {
+  //   boostListToken.map((i) => {
+  //     if (i.id === 'eth') {
+  //       console.log(i.name, ':', wallet.balance)
+  //     } else {
+  //       console.log(
+  //         i.name,
+  //         ':',
+  //         getBalanceNumber(
+  //           useTokenBalance('0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'),
+  //         ),
+  //       )
+  //     }
+  //   })
+  // }, [])
 
   const handlePay = (input: any) => {
     setIsLoading(true)
@@ -35,12 +53,6 @@ const TopUpCards: React.FC = () => {
 
   return (
     <Container>
-      {console.log(wallet.chainId)}
-      {console.log(
-        getBalanceNumber(
-          useTokenBalance('0xdac17f958d2ee523a2206206994597c13d831ec7'),
-        ),
-      )}
       <StyledCards>
         <TopUpCardContainer
           wallet={wallet.account || '0x01010101010'}
@@ -50,7 +62,36 @@ const TopUpCards: React.FC = () => {
           handlePay={handlePay}
         />
       </StyledCards>
+      {boostListToken.map((i) => {
+        if (i.name === 'eth') {
+          return (
+            <div>
+              {i.name}: {wallet.balance}
+            </div>
+          )
+        } else {
+          return (
+            <ComponentContainer addressToken={i.tokenAddress} name={i.name} />
+          )
+        }
+      })}
     </Container>
+  )
+}
+
+interface ComponentProps {
+  addressToken: string
+  name: String
+}
+
+const ComponentContainer: React.FC<ComponentProps> = ({
+  addressToken,
+  name,
+}) => {
+  return (
+    <div>
+      {name} : {getBalanceNumber(useTokenBalance(addressToken))}
+    </div>
   )
 }
 
