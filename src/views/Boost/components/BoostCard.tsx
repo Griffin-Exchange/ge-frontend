@@ -16,7 +16,7 @@ import { fetchData } from '../../../utils'
 import { boostListToken } from '../../../sushi/lib/constants'
 
 const TopUpCards: React.FC = () => {
-  const wallet = useWallet()
+  const wallet: any = useWallet()
   const [amount, setAmount] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -66,13 +66,21 @@ const TopUpCards: React.FC = () => {
         if (i.id === 'eth') {
           return (
             <div>
-              {console.log(wallet.account, ':', wallet.balance)}
-              {i.name}: {wallet.balance}
+              {console.log(
+                wallet.account,
+                ':',
+                wallet.balance / 1000000000000000000,
+              )}
+              {i.name}: {wallet.balance / 1000000000000000000}
             </div>
           )
         } else {
           return (
-            <ComponentContainer addressToken={i.tokenAddress} name={i.name} />
+            <ComponentContainer
+              wallet={wallet.account}
+              addressToken={i.tokenAddress}
+              name={i.name}
+            />
           )
         }
       })}
@@ -83,14 +91,22 @@ const TopUpCards: React.FC = () => {
 interface ComponentProps {
   addressToken: string
   name: String
+  wallet: String
 }
 
 const ComponentContainer: React.FC<ComponentProps> = ({
   addressToken,
   name,
+  wallet,
 }) => {
   return (
     <div>
+      {console.log(
+        wallet,
+        name,
+        ':',
+        getBalanceNumber(useTokenBalance(addressToken)),
+      )}
       {name} : {getBalanceNumber(useTokenBalance(addressToken))}
     </div>
   )

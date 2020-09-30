@@ -282,8 +282,8 @@ export const boostListToken = [
     tokenAddress: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
   },
   {
-    id: 'renbtc',
-    name: 'renBTC',
-    tokenAddress: '0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D',
+    id: 'sussd',
+    name: 'SUSD',
+    tokenAddress: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
   },
 ]
