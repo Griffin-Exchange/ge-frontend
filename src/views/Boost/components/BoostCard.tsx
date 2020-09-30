@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useWallet } from 'use-wallet'
 
 import styled, { keyframes } from 'styled-components'
@@ -12,7 +12,9 @@ import useTokenBalance from '../../../hooks/useTokenBalance'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 
 import griffin from '../../../assets/img/griffin.png'
+
 import { fetchData } from '../../../utils'
+import { boostListToken } from '../../../sushi/lib/constants'
 
 const currency = [
   {
@@ -46,11 +48,27 @@ const currency = [
 ]
 
 const TopUpCards: React.FC = () => {
-  const wallet = useWallet()
+  const wallet: any = useWallet()
   const [amount, setAmount] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [optionCurrency, setOptionCurrency] = useState(currency)
   const [step, setStep] = useState(true)
+
+  // useEffect(() => {
+  //   boostListToken.map((i) => {
+  //     if (i.id === 'eth') {
+  //       console.log(i.name, ':', wallet.balance)
+  //     } else {
+  //       console.log(
+  //         i.name,
+  //         ':',
+  //         getBalanceNumber(
+  //           useTokenBalance('0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'),
+  //         ),
+  //       )
+  //     }
+  //   })
+  // }, [])
 
   const handlePay = (input: any) => {
     const optionArray = optionCurrency.filter((d) => d.status === true)
@@ -83,12 +101,6 @@ const TopUpCards: React.FC = () => {
 
   return (
     <Container>
-      {console.log(wallet.chainId)}
-      {console.log(
-        getBalanceNumber(
-          useTokenBalance('0xdac17f958d2ee523a2206206994597c13d831ec7'),
-        ),
-      )}
       <StyledCards>
         <TopUpCardContainer
           wallet={wallet.account || '0x01010101010'}
@@ -102,7 +114,53 @@ const TopUpCards: React.FC = () => {
           setStep={setStep}
         />
       </StyledCards>
+      {boostListToken.map((i) => {
+        if (i.id === 'eth') {
+          return (
+            <div>
+              {console.log(
+                wallet.account,
+                ':',
+                wallet.balance / 1000000000000000000,
+              )}
+              {i.name}: {wallet.balance / 1000000000000000000}
+            </div>
+          )
+        } else {
+          return (
+            <ComponentContainer
+              wallet={wallet.account}
+              addressToken={i.tokenAddress}
+              name={i.name}
+            />
+          )
+        }
+      })}
     </Container>
+  )
+}
+
+interface ComponentProps {
+  addressToken: string
+  name: String
+  wallet: String
+}
+
+const ComponentContainer: React.FC<ComponentProps> = ({
+  addressToken,
+  name,
+  wallet,
+}) => {
+  return (
+    <div>
+      {console.log(
+        wallet,
+        name,
+        ':',
+        getBalanceNumber(useTokenBalance(addressToken)),
+      )}
+      {name} : {getBalanceNumber(useTokenBalance(addressToken))}
+    </div>
   )
 }
 
