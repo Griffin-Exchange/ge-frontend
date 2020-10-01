@@ -40,10 +40,10 @@ export const addressMap = {
 
 export const contractAddresses = {
   sushi: {
-    1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+    1: '0x21E19121e1360e09AA1F810280c97A87b85d1069',
   },
   masterChef: {
-    1: '0xc2edad668740f1aa35e4d8f227fb8e17dca888cd',
+    1: '0x03EaB41Ce83f1ad532280Ac459be32341d75eb66',
   },
   weth: {
     1: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
@@ -75,11 +75,11 @@ export const GFINPools = [
       1: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
     },
     tokenAddresses: {
-      1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+      1: '0x21E19121e1360e09AA1F810280c97A87b85d1069',
     },
-    name: 'Sushi Party!',
-    symbol: 'SUSHI-ETH UNI-V2 LP',
-    tokenSymbol: 'SUSHI',
+    name: 'Gryffindor',
+    symbol: 'GFIN/ETH UNILP',
+    tokenSymbol: 'GFIN',
     icon: 'gfin-eth.png',
   },
   {
@@ -90,73 +90,60 @@ export const GFINPools = [
     tokenAddresses: {
       1: '0xdac17f958d2ee523a2206206994597c13d831ec7',
     },
-    name: 'Tether Turtle',
-    symbol: 'USDT-ETH UNI-V2 LP',
+    name: 'Tethereum',
+    symbol: 'USDT/ETH UNILP',
     tokenSymbol: 'USDT',
     icon: 'usdt-eth.png',
   },
   {
     pid: 2,
     lpAddresses: {
+      1: '0xf80758ab42c3b07da84053fd88804bcb6baa4b5c',
+    },
+    tokenAddresses: {
+      1: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
+    },
+    name: 'Synthdollar',
+    symbol: 'SUSD/ETH UNILP',
+    tokenSymbol: 'SUSD',
+    icon: 'susd-eth.png',
+  },
+  {
+    pid: 3,
+    lpAddresses: {
       1: '0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc',
     },
     tokenAddresses: {
       1: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
     },
-    name: 'Circle Snail',
-    symbol: 'USDC-ETH UNI-V2 LP',
+    name: 'Coindollar',
+    symbol: 'USDC/ETH UNILP',
     tokenSymbol: 'USDC',
     icon: 'usdc-eth.png',
   },
   {
-    pid: 3,
+    pid: 4,
     lpAddresses: {
       1: '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11',
     },
     tokenAddresses: {
       1: '0x6b175474e89094c44da98b954eedeac495271d0f',
     },
-    name: 'Donald DAI',
-    symbol: 'DAI-ETH UNI-V2 LP',
+    name: 'Everydai',
+    symbol: 'DAI/ETH UNILP',
     tokenSymbol: 'DAI',
     icon: 'dai-eth.png',
   },
   {
-    pid: 4,
-    lpAddresses: {
-      1: '0xf80758ab42c3b07da84053fd88804bcb6baa4b5c',
-    },
-    tokenAddresses: {
-      1: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
-    },
-    name: 'Spartan Dollar',
-    symbol: 'SUSD-ETH UNI-V2 LP',
-    tokenSymbol: 'SUSD',
-    icon: 'susd-eth.png',
-  },
-  {
     pid: 5,
-    lpAddresses: {
-      1: '0x81fbef4704776cc5bba0a5df3a90056d2c6900b3',
-    },
-    tokenAddresses: {
-      1: '0xeb4c2781e4eba804ce9a9803c67d0893436bb27d',
-    },
-    name: 'REN Rhino',
-    symbol: 'renBTC-ETH UNI-V2 LP',
-    tokenSymbol: 'renBTC',
-    icon: 'renbtc-eth.png',
-  },
-  {
-    pid: 6,
     lpAddresses: {
       1: '0xBb2b8038a1640196FbE3e38816F3e67Cba72D940',
     },
     tokenAddresses: {
       1: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
     },
-    name: 'Puzzle BTC',
-    symbol: 'wBTC-ETH UNI-V2 LP',
+    name: 'Satozip',
+    symbol: 'wBTC/ETH UNILP',
     tokenSymbol: 'wBTC',
     icon: 'wbtc-eth.png',
   },
@@ -166,54 +153,41 @@ export const supportedPools = [
   {
     pid: 0,
     lpAddresses: {
-      1: '0x795065dcc9f64b5614c407a6efdc400da6221fb0',
+      1: '0xc3d03e4f041fd4cd388c549ee2a29a9e5075882f',
     },
     tokenAddresses: {
-      1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+      1: '0x6b175474e89094c44da98b954eedeac495271d0f',
     },
-    name: 'Sushi Party!',
-    symbol: 'SUSHI-ETH SUSHI LP',
-    tokenSymbol: 'SUSHI',
-    icon: 'gfin-eth.png',
+    name: 'Everydai Sushi',
+    symbol: 'DAI/ETH SUSHILP',
+    tokenSymbol: 'DAI',
+    icon: 'dai-eth.png',
   },
   {
     pid: 1,
-    lpAddresses: {
-      1: '0x06da0fd433c1a5d7a4faa01111c044910a184553',
-    },
-    tokenAddresses: {
-      1: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-    },
-    name: 'Tether Turtle',
-    symbol: 'USDT-ETH SUSHI LP',
-    tokenSymbol: 'USDT',
-    icon: 'usdt-eth.png',
-  },
-  {
-    pid: 2,
     lpAddresses: {
       1: '0x397ff1542f962076d0bfe58ea045ffa2d347aca0',
     },
     tokenAddresses: {
       1: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
     },
-    name: 'Circle Snail',
-    symbol: 'USDC-ETH SUSHI LP',
+    name: 'Coindollar Sushi',
+    symbol: 'USDC/ETH SUSHILP',
     tokenSymbol: 'USDC',
     icon: 'usdc-eth.png',
   },
   {
-    pid: 3,
+    pid: 2,
     lpAddresses: {
-      1: '0xc3d03e4f041fd4cd388c549ee2a29a9e5075882f',
+      1: '0x06da0fd433c1a5d7a4faa01111c044910a184553',
     },
     tokenAddresses: {
-      1: '0x6b175474e89094c44da98b954eedeac495271d0f',
+      1: '0xdac17f958d2ee523a2206206994597c13d831ec7',
     },
-    name: 'Donald DAI',
-    symbol: 'DAI-ETH SUSHI LP',
-    tokenSymbol: 'DAI',
-    icon: 'dai-eth.png',
+    name: 'Tethereum Sushi',
+    symbol: 'USDT/ETH SUSHILP',
+    tokenSymbol: 'USDT',
+    icon: 'usdt-eth.png',
   },
   {
     pid: 3,
@@ -223,35 +197,9 @@ export const supportedPools = [
     tokenAddresses: {
       1: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
     },
-    name: 'Spartan Dollar',
-    symbol: 'SUSD-ETH SUSHI LP',
+    name: 'Synthdollar Sushi',
+    symbol: 'SUSD/ETH SUSHILP',
     tokenSymbol: 'SUSD',
     icon: 'susd-eth.png',
-  },
-  {
-    pid: 4,
-    lpAddresses: {
-      1: '0x0289b9cd5859476ce325aca04309d36addcebdaa',
-    },
-    tokenAddresses: {
-      1: '0xeb4c2781e4eba804ce9a9803c67d0893436bb27d',
-    },
-    name: 'REN Rhino',
-    symbol: 'renBTC-ETH SUSHI LP',
-    tokenSymbol: 'renBTC',
-    icon: 'renbtc-eth.png',
-  },
-  {
-    pid: 5,
-    lpAddresses: {
-      1: '0xceff51756c56ceffca006cd410b03ffc46dd3a58',
-    },
-    tokenAddresses: {
-      1: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
-    },
-    name: 'Puzzle BTC',
-    symbol: 'WBTC-ETH UNI-V2 LP',
-    tokenSymbol: 'wBTC',
-    icon: 'wbtc-eth.png',
   },
 ]

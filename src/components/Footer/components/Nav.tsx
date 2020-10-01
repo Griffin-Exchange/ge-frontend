@@ -4,15 +4,22 @@ import discordLogo from '../../../assets/img/discord.svg'
 import githubLogo from '../../../assets/img/github.svg'
 import twitterLogo from '../../../assets/img/twitter.svg'
 import uniswapLogo from '../../../assets/img/uniswap.svg'
+import mediumLogo from '../../../assets/img/medium.svg'
 
 const Nav: React.FC = () => {
   return (
     <StyledNav>
       <StyledLink
         target="_blank"
-        href="https://etherscan.io/address/0xc2edad668740f1aa35e4d8f227fb8e17dca888cd#code"
+        href="https://etherscan.io/address/0x21E19121e1360e09AA1F810280c97A87b85d1069#code"
       >
-        Griffin Contract
+        Token Contract
+      </StyledLink>
+      <StyledLink
+        target="_blank"
+        href="https://etherscan.io/address/0x21E19121e1360e09AA1F810280c97A87b85d1069#code"
+      >
+        Staking Contract
       </StyledLink>
       <StyledLink
         target="_blank"
@@ -21,17 +28,21 @@ const Nav: React.FC = () => {
         {/* Uniswap GFIN-ETH */}
         <img alt="uniswap" src={uniswapLogo} style={{ height: 24 }} />
       </StyledLink>
-      <StyledLink target="_blank" href="https://discord.gg/hJ2p555">
+      <StyledLink target="_blank" href="https://discord.gg/fbqhQe">
         {/* Discord */}
         <img alt="discord" src={discordLogo} style={{ height: 24 }} />
       </StyledLink>
-      <StyledLink target="_blank" href="https://github.com/sushiswap">
+      <StyledLink target="_blank" href="https://github.com/griffinexchange">
         {/* Github */}
         <img alt="github" src={githubLogo} style={{ height: 24 }} />
       </StyledLink>
-      <StyledLink target="_blank" href="https://twitter.com/sushiswap">
+      <StyledLink target="_blank" href="https://twitter.com/griffinXchange">
         {/* Twitter */}
         <img alt="twitter" src={twitterLogo} style={{ height: 24 }} />
+      </StyledLink>
+      <StyledLink target="_blank" href="https://medium.com/@griffinexchange">
+        {/* Medium */}
+        <img alt="medium" src={mediumLogo} style={{ height: 24 }} />
       </StyledLink>
     </StyledNav>
   )

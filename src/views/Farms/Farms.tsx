@@ -41,14 +41,14 @@ const Farms: React.FC = () => {
                       onClick={() => setFarmsType('gfin')}
                       variant={farmsType === 'gfin' ? 'secondary' : 'default'}
                       size="md"
-                      text="Uniswap LP Tokens"
+                      text="Rider's Choice"
                     />
                     <Spacer size="lg" />
                     <Button
                       onClick={() => setFarmsType('sushi')}
                       variant={farmsType === 'sushi' ? 'secondary' : 'default'}
                       size="md"
-                      text="Sushiswap LP Tokens"
+                      text="Hungry Bird"
                     />
                   </StyledTab>
                   <FarmCards type={farmsType} />
