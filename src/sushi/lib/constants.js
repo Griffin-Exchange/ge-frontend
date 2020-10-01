@@ -78,8 +78,8 @@ export const GFINPools = [
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
     },
     name: 'Sushi Party!',
-    symbol: 'SUSHI-ETH UNI-V2 LP',
-    tokenSymbol: 'SUSHI',
+    symbol: 'GFIN-ETH UNI-V2 LP',
+    tokenSymbol: 'GFIN',
     icon: 'gfin-eth.png',
   },
   {
@@ -172,8 +172,8 @@ export const supportedPools = [
       1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
     },
     name: 'Sushi Party!',
-    symbol: 'SUSHI-ETH SUSHI LP',
-    tokenSymbol: 'SUSHI',
+    symbol: 'GFIN-ETH SUSHI LP',
+    tokenSymbol: 'GFIN',
     icon: 'gfin-eth.png',
   },
   {

@@ -101,7 +101,7 @@ const TopUpCards: React.FC = () => {
     newArr[index].transferEditor = total
     let _total = newArr[index].defaultWallet - parseFloat(total)
     if (_total < 0) {
-      setError("The number can't be minus", newArr[index].name)
+      setError('Not enough balance', newArr[index].name)
     }
     newArr[index].walletEditor =
       total > 0
@@ -184,6 +184,7 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
             {!step ? (
               <RowSpaceBetween>
                 <SpanTitle>Wallet</SpanTitle>
+                <SpanTitle>Send Amount</SpanTitle>
                 <SpanTitle>State Channel</SpanTitle>
               </RowSpaceBetween>
             ) : null}
@@ -271,7 +272,7 @@ const RowInput: React.FC<RowInputProps> = ({
       <SpanRowSymbol>&gt;</SpanRowSymbol>
       <StyledFinance>
         <InputRowStyle
-          value={data.transferEditor}
+          value={data.transferEditor === 0 ? '' : data.transferEditor}
           placeholder="0"
           onChange={(e) => setAmount(e.target.value, index)}
         />
@@ -316,7 +317,7 @@ const Row = styled.div`
   justify-content: center;
 `
 const WrapContainer = styled.div`
-  width: 600px;
+  width: 750px;
   text-align: center;
   vertical-align: middle;
   letter-spacing: 3px;
@@ -421,7 +422,7 @@ const StyledCardWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc((1900px - ${(props) => props.theme.spacing[4]}px * 2) / 3);
+  width: 800px;
   position: relative;
 `
 
