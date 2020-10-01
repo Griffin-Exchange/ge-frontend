@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useWallet } from 'use-wallet'
+import { debounce } from "debounce";
 
 import styled, { keyframes } from 'styled-components'
 import CardIcon from '../../../components/CardIcon'
@@ -22,26 +23,6 @@ const TopUpCards: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [optionCurrency, setOptionCurrency] = useState(boostListToken)
   const [step, setStep] = useState(true)
-
-  useEffect(() => {
-    // setAmountEditor()
-  }, [])
-
-  // const setAmountEditor = () => {
-  //   optionCurrency.map((data: any) => {
-  //     let o = Object.assign({}, data)
-  //     if (data.name === 'ETH') {
-  //       o.walletEditor = wallet.balance / 10000000000000000000
-  //     } else {
-  //       // change walletEditor value to amount actually wallet address
-  //       o.walletEditor = getBalanceNumber(useTokenBalance(data.addressToken))
-  //     }
-  //     o.transferEditor = 0
-  //     // change stateChannel value to amount actually state Channel
-  //     o.stateChannelEditor = 0
-  //     return o
-  //   })
-  // }
 
   const handlePay = (input: any) => {
     const optionArray = optionCurrency.filter((d) => d.status === true)
