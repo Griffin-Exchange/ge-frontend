@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useWallet } from 'use-wallet'
-import { debounce } from "debounce";
+import { debounce } from 'debounce'
 
 import styled, { keyframes } from 'styled-components'
 import CardIcon from '../../../components/CardIcon'
@@ -52,28 +52,29 @@ const TopUpCards: React.FC = () => {
     setOptionCurrency(newArr)
   }
 
-  const handleTransferChanged = (index: any, value: number) => {
-    // let newArr = [...optionCurrency]
-    // newArr[index].walletEditor =
-    //   newArr[index].walletEditor - value < 0
-    //     ? 0
-    //     : value === 0
-    //     ? newArr[index].defaultWallet
-    //     : newArr[index].transferEditor > value
-    //     ? parseFloat(newArr[index].walletEditor.toString()) -
-    //       parseFloat(value.toString())
-    //     : parseFloat(newArr[index].walletEditor.toString()) +
-    //       parseFloat(value.toString())
-    // newArr[index].transferEditor = value
-    // setOptionCurrency(newArr)
+  const handleTransferChanged = (total: any, index: any) => {
+    let newArr = [...optionCurrency]
+    newArr[index].transferEditor = total
+    newArr[index].walletEditor = newArr[index].defaultWallet - parseFloat(total)
+    newArr[index].stateChannelEditor = total
+    console.log(newArr[index].defaultWallet - parseFloat(total))
+
+    setOptionCurrency(newArr)
+    //     i.transferEditor = total
+    //     // total == null || total === 0 || total === undefined
+    //     //   ? i.walletEditor
+    //     //   : i.walletEditor - total
   }
 
   const setWalletEditor = (total: any, name: any) => {
-    boostListToken.forEach((i) => {
+    let newArr = [...optionCurrency]
+    newArr.forEach((i) => {
       if (i.name === name) {
+        i.defaultWallet = total
         i.walletEditor = total
       }
     })
+    setOptionCurrency(newArr)
   }
 
   return (
@@ -156,7 +157,7 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
               ? optionCurrency.map((data: any, index: any) =>
                   data.status === true ? (
                     data.name === 'ETH' ? (
-                      <RowSpaceBetween>
+                      <RowSpaceBetween key={index}>
                         {setWalletEditor(
                           wallet.balance / 1000000000000000000,
                           data.name,
@@ -172,10 +173,10 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
                         <SpanRowSymbol>&gt;</SpanRowSymbol>
                         <StyledFinance>
                           <InputRowStyle
-                            value={amount}
+                            value={data.transferEditor}
                             placeholder="0"
                             onChange={(e) =>
-                              handleTransferChanged(index, e.target.value)
+                              handleTransferChanged(e.target.value, index)
                             }
                           />
                         </StyledFinance>
@@ -191,6 +192,7 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
                       </RowSpaceBetween>
                     ) : (
                       <RowInput
+                        key={index}
                         index={index}
                         data={data}
                         addressToken={data.tokenAddress}
@@ -278,9 +280,9 @@ const RowInput: React.FC<RowInputProps> = ({
       <SpanRowSymbol>&gt;</SpanRowSymbol>
       <StyledFinance>
         <InputRowStyle
-          value={amount}
+          value={data.transferEditor}
           placeholder="0"
-          onChange={(e) => setAmount(index, e.target.value)}
+          onChange={(e) => setAmount(e.target.value, index)}
         />
       </StyledFinance>
       <SpanRowSymbol>&gt;</SpanRowSymbol>
