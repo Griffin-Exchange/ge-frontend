@@ -20,30 +20,51 @@ const currency = [
   {
     name: 'USDT',
     status: false,
+    defaultWallet: 20,
+    walletEditor: 20,
+    transferEditor: 0,
   },
   {
     name: 'USDC',
     status: false,
+    defaultWallet: 20,
+    walletEditor: 0,
+    transferEditor: 0,
   },
   {
     name: 'ETH',
     status: false,
+    defaultWallet: 20,
+    walletEditor: 0,
+    transferEditor: 0,
   },
   {
     name: 'DAI',
     status: false,
+    defaultWallet: 20,
+    walletEditor: 0,
+    transferEditor: 0,
   },
   {
     name: 'wBTC',
     status: false,
+    defaultWallet: 20,
+    walletEditor: 0,
+    transferEditor: 0,
   },
   {
     name: 'renBTC',
     status: false,
+    defaultWallet: 20,
+    walletEditor: 0,
+    transferEditor: 0,
   },
   {
     name: 'GFIN',
     status: false,
+    defaultWallet: 20,
+    walletEditor: 0,
+    transferEditor: 0,
   },
 ]
 
@@ -92,10 +113,25 @@ const TopUpCards: React.FC = () => {
   }
 
   const handleOptionCurrencyChanged = (index: any) => {
-    console.log('index: ' + index)
     let newArr = [...optionCurrency]
     newArr[index].status = !newArr[index].status
 
+    setOptionCurrency(newArr)
+  }
+
+  const handleTransferChanged = (index: any, value: number) => {
+    let newArr = [...optionCurrency]
+    newArr[index].walletEditor =
+      newArr[index].walletEditor - value < 0
+        ? 0
+        : value === 0
+        ? newArr[index].defaultWallet
+        : newArr[index].transferEditor > value
+        ? parseFloat(newArr[index].walletEditor.toString()) -
+          parseFloat(value.toString())
+        : parseFloat(newArr[index].walletEditor.toString()) +
+          parseFloat(value.toString())
+    newArr[index].transferEditor = value
     setOptionCurrency(newArr)
   }
 
@@ -112,9 +148,10 @@ const TopUpCards: React.FC = () => {
           handleOptionCurrency={handleOptionCurrencyChanged}
           step={step}
           setStep={setStep}
+          handleTransferChanged={handleTransferChanged}
         />
       </StyledCards>
-      {boostListToken.map((i) => {
+      {/* {boostListToken.map((i) => {
         if (i.id === 'eth') {
           return (
             <div>
@@ -135,7 +172,7 @@ const TopUpCards: React.FC = () => {
             />
           )
         }
-      })}
+      })} */}
     </Container>
   )
 }
@@ -174,6 +211,7 @@ interface TopUpCardProps {
   handleOptionCurrency: Function
   step: Boolean
   setStep: Function
+  handleTransferChanged: Function
 }
 
 const TopUpCardContainer: React.FC<TopUpCardProps> = ({
@@ -186,6 +224,7 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
   handleOptionCurrency,
   step,
   setStep,
+  handleTransferChanged,
 }) => {
   return (
     <StyledCardWrapper>
@@ -251,34 +290,11 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
                     </span>
                     <StyledFinance>
                       <input
-                        value={amount}
+                        value={data.walletEditor}
+                        type="number"
+                        min="0"
                         placeholder="0"
-                        onChange={(e) => setAmount(e.target.value)}
-                        style={{
-                          direction: 'rtl',
-                          background: 'transparent',
-                          outline: 'none',
-                          border: 0,
-                          color: '#fff',
-                          width: 'inherit',
-                        }}
                         readOnly
-                      />
-                    </StyledFinance>
-                    <span
-                      style={{
-                        color: '#fc8a58',
-                        fontWeight: 'bold',
-                        margin: '10px 15px 0px 15px',
-                      }}
-                    >
-                      &gt;
-                    </span>
-                    <StyledFinance>
-                      <input
-                        value={amount}
-                        placeholder="0"
-                        onChange={(e) => setAmount(e.target.value)}
                         style={{
                           direction: 'rtl',
                           background: 'transparent',
@@ -300,9 +316,13 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
                     </span>
                     <StyledFinance>
                       <input
-                        value={amount}
+                        value={data.transferEditor}
+                        type="number"
+                        min="0"
                         placeholder="0"
-                        onChange={(e) => setAmount(e.target.value)}
+                        onChange={(e) =>
+                          handleTransferChanged(index, e.target.value)
+                        }
                         style={{
                           direction: 'rtl',
                           background: 'transparent',
@@ -311,7 +331,32 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
                           color: '#fff',
                           width: 'inherit',
                         }}
+                      />
+                    </StyledFinance>
+                    <span
+                      style={{
+                        color: '#fc8a58',
+                        fontWeight: 'bold',
+                        margin: '10px 15px 0px 15px',
+                      }}
+                    >
+                      &gt;
+                    </span>
+                    <StyledFinance>
+                      <input
+                        value={data.transferEditor}
+                        type="number"
+                        min="0"
+                        placeholder="0"
                         readOnly
+                        style={{
+                          direction: 'rtl',
+                          background: 'transparent',
+                          outline: 'none',
+                          border: 0,
+                          color: '#fff',
+                          width: 'inherit',
+                        }}
                       />
                     </StyledFinance>
                   </RowSpaceBetween>
