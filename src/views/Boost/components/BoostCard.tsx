@@ -16,80 +16,12 @@ import griffin from '../../../assets/img/griffin.png'
 import { fetchData } from '../../../utils'
 import { boostListToken } from '../../../sushi/lib/constants'
 
-const currency = [
-  {
-    name: 'USDT',
-    status: false,
-    defaultWallet: 20,
-    walletEditor: 20,
-    transferEditor: 0,
-  },
-  {
-    name: 'USDC',
-    status: false,
-    defaultWallet: 20,
-    walletEditor: 0,
-    transferEditor: 0,
-  },
-  {
-    name: 'ETH',
-    status: false,
-    defaultWallet: 20,
-    walletEditor: 0,
-    transferEditor: 0,
-  },
-  {
-    name: 'DAI',
-    status: false,
-    defaultWallet: 20,
-    walletEditor: 0,
-    transferEditor: 0,
-  },
-  {
-    name: 'wBTC',
-    status: false,
-    defaultWallet: 20,
-    walletEditor: 0,
-    transferEditor: 0,
-  },
-  {
-    name: 'renBTC',
-    status: false,
-    defaultWallet: 20,
-    walletEditor: 0,
-    transferEditor: 0,
-  },
-  {
-    name: 'GFIN',
-    status: false,
-    defaultWallet: 20,
-    walletEditor: 0,
-    transferEditor: 0,
-  },
-]
-
 const TopUpCards: React.FC = () => {
   const wallet: any = useWallet()
   const [amount, setAmount] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [optionCurrency, setOptionCurrency] = useState(currency)
+  const [optionCurrency, setOptionCurrency] = useState(boostListToken)
   const [step, setStep] = useState(true)
-
-  // useEffect(() => {
-  //   boostListToken.map((i) => {
-  //     if (i.id === 'eth') {
-  //       console.log(i.name, ':', wallet.balance)
-  //     } else {
-  //       console.log(
-  //         i.name,
-  //         ':',
-  //         getBalanceNumber(
-  //           useTokenBalance('0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'),
-  //         ),
-  //       )
-  //     }
-  //   })
-  // }, [])
 
   const handlePay = (input: any) => {
     const optionArray = optionCurrency.filter((d) => d.status === true)
@@ -120,26 +52,26 @@ const TopUpCards: React.FC = () => {
   }
 
   const handleTransferChanged = (index: any, value: number) => {
-    let newArr = [...optionCurrency]
-    newArr[index].walletEditor =
-      newArr[index].walletEditor - value < 0
-        ? 0
-        : value === 0
-        ? newArr[index].defaultWallet
-        : newArr[index].transferEditor > value
-        ? parseFloat(newArr[index].walletEditor.toString()) -
-          parseFloat(value.toString())
-        : parseFloat(newArr[index].walletEditor.toString()) +
-          parseFloat(value.toString())
-    newArr[index].transferEditor = value
-    setOptionCurrency(newArr)
+  //   let newArr = [...optionCurrency]
+  //   newArr[index].walletEditor =
+  //     newArr[index].walletEditor - value < 0
+  //       ? 0
+  //       : value === 0
+  //       ? newArr[index].defaultWallet
+  //       : newArr[index].transferEditor > value
+  //       ? parseFloat(newArr[index].walletEditor.toString()) -
+  //         parseFloat(value.toString())
+  //       : parseFloat(newArr[index].walletEditor.toString()) +
+  //         parseFloat(value.toString())
+  //   newArr[index].transferEditor = value
+  //   setOptionCurrency(newArr)
   }
 
   return (
     <Container>
       <StyledCards>
         <TopUpCardContainer
-          wallet={wallet.account || '0x01010101010'}
+          wallet={wallet || '0x01010101010'}
           amount={amount}
           setAmount={(e: any) => setAmount(e)}
           isLoading={isLoading}
@@ -151,58 +83,12 @@ const TopUpCards: React.FC = () => {
           handleTransferChanged={handleTransferChanged}
         />
       </StyledCards>
-      {/* {boostListToken.map((i) => {
-        if (i.id === 'eth') {
-          return (
-            <div>
-              {console.log(
-                wallet.account,
-                ':',
-                wallet.balance / 1000000000000000000,
-              )}
-              {i.name}: {wallet.balance / 1000000000000000000}
-            </div>
-          )
-        } else {
-          return (
-            <ComponentContainer
-              wallet={wallet.account}
-              addressToken={i.tokenAddress}
-              name={i.name}
-            />
-          )
-        }
-      })} */}
     </Container>
   )
 }
 
-interface ComponentProps {
-  addressToken: string
-  name: String
-  wallet: String
-}
-
-const ComponentContainer: React.FC<ComponentProps> = ({
-  addressToken,
-  name,
-  wallet,
-}) => {
-  return (
-    <div>
-      {console.log(
-        wallet,
-        name,
-        ':',
-        getBalanceNumber(useTokenBalance(addressToken)),
-      )}
-      {name} : {getBalanceNumber(useTokenBalance(addressToken))}
-    </div>
-  )
-}
-
 interface TopUpCardProps {
-  wallet: String
+  wallet: any
   amount: any
   setAmount: any
   isLoading: Boolean
@@ -245,128 +131,52 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
               <span style={{ color: '#fc8a58', fontWeight: 'bold' }}>
                 ADDRESS
               </span>
-              <span>{wallet}</span>
+              <span>{wallet.account}</span>
             </StyledInsight>
             <Spacer />
             {!step ? (
               <RowSpaceBetween>
-                <span
-                  style={{
-                    color: '#fff',
-                    fontWeight: 'bold',
-                    marginTop: '10px',
-                    marginRight: '10px',
-                  }}
-                >
-                  Wallet
-                </span>
-                <span
-                  style={{
-                    color: '#fff',
-                    fontWeight: 'bold',
-                    marginTop: '10px',
-                    marginRight: '10px',
-                  }}
-                >
-                  State Channel
-                </span>
+                <SpanTitle>Wallet</SpanTitle>
+                <SpanTitle>State Channel</SpanTitle>
               </RowSpaceBetween>
-            ) : (
-              <></>
-            )}
-            {!step ? (
-              optionCurrency.map((data: any, index: any) =>
-                data.status === true ? (
-                  <RowSpaceBetween>
-                    <span
-                      style={{
-                        color: '#fc8a58',
-                        fontWeight: 'bold',
-                        marginTop: '10px',
-                        marginRight: '10px',
-                      }}
-                    >
-                      {data.name}
-                    </span>
-                    <StyledFinance>
-                      <input
-                        value={data.walletEditor}
-                        type="number"
-                        min="0"
-                        placeholder="0"
-                        readOnly
-                        style={{
-                          direction: 'rtl',
-                          background: 'transparent',
-                          outline: 'none',
-                          border: 0,
-                          color: '#fff',
-                          width: 'inherit',
-                        }}
+            ) : null}
+            {!step
+              ? optionCurrency.map((data: any, index: any) =>
+                  data.status === true ? (
+                    data.name === 'ETH' ? (
+                      <RowSpaceBetween>
+                        <SpanRowName>{data.name}</SpanRowName>
+                        <StyledFinance>
+                          <InputRowStyle
+                            value={wallet.balance / 10000000000000000000}
+                            placeholder="0"
+                            readOnly
+                          />
+                        </StyledFinance>
+                        <SpanRowSymbol>&gt;</SpanRowSymbol>
+                        <StyledFinance>
+                          <InputRowStyle
+                            value={amount}
+                            placeholder="0"
+                            onChange={(e) => setAmount(e.target.value)}
+                          />
+                        </StyledFinance>
+                        <SpanRowSymbol>&gt;</SpanRowSymbol>
+                        <StyledFinance>
+                          <InputRowStyle placeholder="0" readOnly />
+                        </StyledFinance>
+                      </RowSpaceBetween>
+                    ) : (
+                      <RowInput
+                        name={data.name}
+                        addressToken={data.tokenAddress}
+                        amount={amount}
+                        setAmount={setAmount}
                       />
-                    </StyledFinance>
-                    <span
-                      style={{
-                        color: '#fc8a58',
-                        fontWeight: 'bold',
-                        margin: '10px 15px 0px 15px',
-                      }}
-                    >
-                      &gt;
-                    </span>
-                    <StyledFinance>
-                      <input
-                        value={data.transferEditor}
-                        type="number"
-                        min="0"
-                        placeholder="0"
-                        onChange={(e) =>
-                          handleTransferChanged(index, e.target.value)
-                        }
-                        style={{
-                          direction: 'rtl',
-                          background: 'transparent',
-                          outline: 'none',
-                          border: 0,
-                          color: '#fff',
-                          width: 'inherit',
-                        }}
-                      />
-                    </StyledFinance>
-                    <span
-                      style={{
-                        color: '#fc8a58',
-                        fontWeight: 'bold',
-                        margin: '10px 15px 0px 15px',
-                      }}
-                    >
-                      &gt;
-                    </span>
-                    <StyledFinance>
-                      <input
-                        value={data.transferEditor}
-                        type="number"
-                        min="0"
-                        placeholder="0"
-                        readOnly
-                        style={{
-                          direction: 'rtl',
-                          background: 'transparent',
-                          outline: 'none',
-                          border: 0,
-                          color: '#fff',
-                          width: 'inherit',
-                        }}
-                      />
-                    </StyledFinance>
-                  </RowSpaceBetween>
-                ) : (
-                  <></>
-                ),
-              )
-            ) : (
-              <></>
-            )}
+                    )
+                  ) : null,
+                )
+              : null}
             <Spacer />
             {step ? (
               <WrapContainer>
@@ -384,9 +194,7 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
                   </ButtonCurrency>
                 ))}
               </WrapContainer>
-            ) : (
-              <></>
-            )}
+            ) : null}
             <StyledSpacer />
             {!isLoading ? (
               <>
@@ -395,9 +203,7 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
                     <Button onClick={() => setStep(true)} text="CANCEL" />
                     <Spacer />
                   </>
-                ) : (
-                  <></>
-                )}
+                ) : null}
                 <Button
                   onClick={() => handlePay(amount)}
                   text={step ? 'NEXT' : 'EXECUTE'}
@@ -410,6 +216,45 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
         </CardContent>
       </CardFarm>
     </StyledCardWrapper>
+  )
+}
+
+interface RowInputProps {
+  addressToken: string
+  name: String
+  amount: number
+  setAmount: Function
+}
+
+const RowInput: React.FC<RowInputProps> = ({
+  addressToken,
+  name,
+  amount,
+  setAmount,
+}) => {
+  return (
+    <RowSpaceBetween>
+      <SpanRowName>{name}</SpanRowName>
+      <StyledFinance>
+        <InputRowStyle
+          value={getBalanceNumber(useTokenBalance(addressToken))}
+          placeholder="0"
+          readOnly
+        />
+      </StyledFinance>
+      <SpanRowSymbol>&gt;</SpanRowSymbol>
+      <StyledFinance>
+        <InputRowStyle
+          value={amount}
+          placeholder="0"
+          onChange={(e) => setAmount(e.target.value)}
+        />
+      </StyledFinance>
+      <SpanRowSymbol>&gt;</SpanRowSymbol>
+      <StyledFinance>
+        <InputRowStyle placeholder="0" readOnly />
+      </StyledFinance>
+    </RowSpaceBetween>
   )
 }
 
@@ -594,6 +439,35 @@ const StyledFinance = styled.div`
   padding: 10px 12px;
   text-align: center;
   letter-spacing: 3px;
+`
+
+const SpanTitle = styled.span`
+  color: #fff;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-right: 10px;
+`
+
+const SpanRowName = styled.span`
+  color: #fc8a58;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-right: 10px;
+`
+
+const SpanRowSymbol = styled.span`
+  color: #fc8a58;
+  font-weight: bold;
+  margin: 10px 15px 0px 15px;
+`
+
+const InputRowStyle = styled.input`
+  direction: rtl;
+  background: transparent;
+  outline: none;
+  border: 0;
+  color: #fff;
+  width: inherit;
 `
 
 export default TopUpCards

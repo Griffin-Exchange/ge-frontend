@@ -260,30 +260,36 @@ export const boostListToken = [
   {
     id: 'eth',
     name: 'ETH',
+    status: false,
   },
   {
     id: 'usdt',
     name: 'USDT',
     tokenAddress: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+    status: false,
   },
   {
     id: 'usdc',
     name: 'USDC',
     tokenAddress: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+    status: false,
   },
   {
     id: 'dai',
     name: 'DAI',
     tokenAddress: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+    status: false,
   },
   {
     id: 'wbtc',
     name: 'wBTC',
     tokenAddress: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
+    status: false,
   },
   {
     id: 'sussd',
     name: 'SUSD',
     tokenAddress: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
+    status: false,
   },
 ]
