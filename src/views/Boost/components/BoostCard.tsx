@@ -165,7 +165,7 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
                   data.status === true ? (
                     data.name === 'ETH' ? (
                       <RowSpaceBetween>
-                        <SpanRowName></SpanRowName>
+                        <SpanRowName>{data.name}</SpanRowName>
                         <StyledFinance>
                           <InputRowStyle
                             value={data.walletEditor}
