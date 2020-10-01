@@ -7,11 +7,14 @@ import Button from '../../../components/Button'
 import CardContent from '../../../components/CardContent'
 import Loader from '../../../components/Loader'
 
+import useTokenBalance from '../../../hooks/useTokenBalance'
+import { getBalanceNumber } from '../../../utils/formatBalance'
+
 import griffin from '../../../assets/img/griffin.png'
 import { fetchData } from '../../../utils'
 
 const TopUpCards: React.FC = () => {
-  const { account } = useWallet()
+  const wallet = useWallet()
   const [amount, setAmount] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -32,9 +35,15 @@ const TopUpCards: React.FC = () => {
 
   return (
     <Container>
+      {/* {console.log(
+        'USDC VAL: ',
+        getBalanceNumber(
+          useTokenBalance('0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'),
+        ),
+      )} */}
       <StyledCards>
         <TopUpCardContainer
-          wallet={account || '0x01010101010'}
+          wallet={wallet.account || '0x01010101010'}
           amount={amount}
           setAmount={(e: any) => setAmount(e)}
           isLoading={isLoading}
