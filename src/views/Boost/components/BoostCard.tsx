@@ -23,6 +23,26 @@ const TopUpCards: React.FC = () => {
   const [optionCurrency, setOptionCurrency] = useState(boostListToken)
   const [step, setStep] = useState(true)
 
+  useEffect(() => {
+    // setAmountEditor()
+  }, [])
+
+  // const setAmountEditor = () => {
+  //   optionCurrency.map((data: any) => {
+  //     let o = Object.assign({}, data)
+  //     if (data.name === 'ETH') {
+  //       o.walletEditor = wallet.balance / 10000000000000000000
+  //     } else {
+  //       // change walletEditor value to amount actually wallet address
+  //       o.walletEditor = getBalanceNumber(useTokenBalance(data.addressToken))
+  //     }
+  //     o.transferEditor = 0
+  //     // change stateChannel value to amount actually state Channel
+  //     o.stateChannelEditor = 0
+  //     return o
+  //   })
+  // }
+
   const handlePay = (input: any) => {
     const optionArray = optionCurrency.filter((d) => d.status === true)
 
@@ -52,19 +72,19 @@ const TopUpCards: React.FC = () => {
   }
 
   const handleTransferChanged = (index: any, value: number) => {
-  //   let newArr = [...optionCurrency]
-  //   newArr[index].walletEditor =
-  //     newArr[index].walletEditor - value < 0
-  //       ? 0
-  //       : value === 0
-  //       ? newArr[index].defaultWallet
-  //       : newArr[index].transferEditor > value
-  //       ? parseFloat(newArr[index].walletEditor.toString()) -
-  //         parseFloat(value.toString())
-  //       : parseFloat(newArr[index].walletEditor.toString()) +
-  //         parseFloat(value.toString())
-  //   newArr[index].transferEditor = value
-  //   setOptionCurrency(newArr)
+    // let newArr = [...optionCurrency]
+    // newArr[index].walletEditor =
+    //   newArr[index].walletEditor - value < 0
+    //     ? 0
+    //     : value === 0
+    //     ? newArr[index].defaultWallet
+    //     : newArr[index].transferEditor > value
+    //     ? parseFloat(newArr[index].walletEditor.toString()) -
+    //       parseFloat(value.toString())
+    //     : parseFloat(newArr[index].walletEditor.toString()) +
+    //       parseFloat(value.toString())
+    // newArr[index].transferEditor = value
+    // setOptionCurrency(newArr)
   }
 
   return (
@@ -145,10 +165,10 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
                   data.status === true ? (
                     data.name === 'ETH' ? (
                       <RowSpaceBetween>
-                        <SpanRowName>{data.name}</SpanRowName>
+                        <SpanRowName></SpanRowName>
                         <StyledFinance>
                           <InputRowStyle
-                            value={wallet.balance / 10000000000000000000}
+                            value={data.walletEditor}
                             placeholder="0"
                             readOnly
                           />
@@ -158,20 +178,28 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
                           <InputRowStyle
                             value={amount}
                             placeholder="0"
-                            onChange={(e) => setAmount(e.target.value)}
+                            onChange={(e) =>
+                              handleTransferChanged(index, e.target.value)
+                            }
                           />
                         </StyledFinance>
                         <SpanRowSymbol>&gt;</SpanRowSymbol>
                         <StyledFinance>
-                          <InputRowStyle placeholder="0" readOnly />
+                          {/* change value amount state channel + amount */}
+                          <InputRowStyle
+                            value={data.stateChannelEditor}
+                            placeholder="0"
+                            readOnly
+                          />
                         </StyledFinance>
                       </RowSpaceBetween>
                     ) : (
                       <RowInput
-                        name={data.name}
+                        index={index}
+                        data={data}
                         addressToken={data.tokenAddress}
                         amount={amount}
-                        setAmount={setAmount}
+                        setAmount={handleTransferChanged}
                       />
                     )
                   ) : null,
@@ -221,23 +249,25 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
 
 interface RowInputProps {
   addressToken: string
-  name: String
+  index: number
+  data: any
   amount: number
   setAmount: Function
 }
 
 const RowInput: React.FC<RowInputProps> = ({
   addressToken,
-  name,
+  index,
+  data,
   amount,
   setAmount,
 }) => {
   return (
     <RowSpaceBetween>
-      <SpanRowName>{name}</SpanRowName>
+      <SpanRowName>{data.name}</SpanRowName>
       <StyledFinance>
         <InputRowStyle
-          value={getBalanceNumber(useTokenBalance(addressToken))}
+          value={getBalanceNumber(useTokenBalance(addressToken)).toFixed(4)}
           placeholder="0"
           readOnly
         />
@@ -247,12 +277,17 @@ const RowInput: React.FC<RowInputProps> = ({
         <InputRowStyle
           value={amount}
           placeholder="0"
-          onChange={(e) => setAmount(e.target.value)}
+          onChange={(e) => setAmount(index, e.target.value)}
         />
       </StyledFinance>
       <SpanRowSymbol>&gt;</SpanRowSymbol>
       <StyledFinance>
-        <InputRowStyle placeholder="0" readOnly />
+        {/* change value amount state channel + amount */}
+        <InputRowStyle
+          value={data.stateChannelEditor}
+          placeholder="0"
+          readOnly
+        />
       </StyledFinance>
     </RowSpaceBetween>
   )
@@ -438,7 +473,6 @@ const StyledFinance = styled.div`
   box-shadow: inset 3px 3px 7px 0 #1b1b1b, inset -6px -6px 10px 0 #353535;
   padding: 10px 12px;
   text-align: center;
-  letter-spacing: 3px;
 `
 
 const SpanTitle = styled.span`
