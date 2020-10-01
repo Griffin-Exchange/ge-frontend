@@ -56,10 +56,21 @@ const TopUpCards: React.FC = () => {
     setOptionCurrency(newArr)
   }
 
+  const setError = (error: string, name: string) => {
+    let newArr = [...optionCurrency]
+    newArr.forEach(async (data: any) => {
+      if (data.name === name) {
+        data.error = error
+      }
+    })
+    setOptionCurrency(newArr)
+  }
+
   const handlePay = (input: any) => {
     const optionArray = optionCurrency.filter((d) => d.status === true)
+    const checkError = optionCurrency.filter((d) => d.error !== '')
 
-    if (step && optionArray.length > 0) {
+    if (step && optionArray.length > 0 && checkError.length === 0) {
       setStep(false)
     } else {
       // setIsLoading(true)
@@ -86,8 +97,12 @@ const TopUpCards: React.FC = () => {
 
   const handleTransferChanged = (total: any, index: any) => {
     let newArr = [...optionCurrency]
+    setError('', newArr[index].name)
     newArr[index].transferEditor = total
     let _total = newArr[index].defaultWallet - parseFloat(total)
+    if (_total < 0) {
+      setError("The number can't be minus", newArr[index].name)
+    }
     newArr[index].walletEditor =
       total > 0
         ? _total > 0
@@ -175,46 +190,14 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
             {!step
               ? optionCurrency.map((data: any, index: any) =>
                   data.status === true ? (
-                    data.name === 'ETH' ? (
-                      <RowSpaceBetween key={index}>
-                        <SpanRowName>{data.name}</SpanRowName>
-                        <StyledFinance>
-                          <InputRowStyle
-                            value={data.walletEditor.toFixed(4)}
-                            placeholder="0"
-                            readOnly
-                          />
-                        </StyledFinance>
-                        <SpanRowSymbol>&gt;</SpanRowSymbol>
-                        <StyledFinance>
-                          <InputRowStyle
-                            value={data.transferEditor}
-                            placeholder="0"
-                            onChange={(e) =>
-                              handleTransferChanged(e.target.value, index)
-                            }
-                          />
-                        </StyledFinance>
-                        <SpanRowSymbol>&gt;</SpanRowSymbol>
-                        <StyledFinance>
-                          {/* change value amount state channel + amount */}
-                          <InputRowStyle
-                            value={data.stateChannelEditor}
-                            placeholder="0"
-                            readOnly
-                          />
-                        </StyledFinance>
-                      </RowSpaceBetween>
-                    ) : (
-                      <RowInput
-                        key={index}
-                        index={index}
-                        data={data}
-                        addressToken={data.tokenAddress}
-                        amount={amount}
-                        setAmount={handleTransferChanged}
-                      />
-                    )
+                    <RowInput
+                      key={index}
+                      index={index}
+                      data={data}
+                      addressToken={data.tokenAddress}
+                      amount={amount}
+                      setAmount={handleTransferChanged}
+                    />
                   ) : null,
                 )
               : null}
@@ -297,7 +280,7 @@ const RowInput: React.FC<RowInputProps> = ({
       <StyledFinance>
         {/* change value amount state channel + amount */}
         <InputRowStyle
-          value={data.stateChannelEditor}
+          value={data.error !== '' ? data.error : data.stateChannelEditor}
           placeholder="0"
           readOnly
         />

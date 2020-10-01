@@ -265,6 +265,7 @@ export const boostListToken = [
     walletEditor: 0,
     transferEditor: 0,
     stateChannelEditor: 0,
+    error: '',
   },
   {
     id: 'usdt',
@@ -275,6 +276,7 @@ export const boostListToken = [
     walletEditor: 0,
     transferEditor: 0,
     stateChannelEditor: 0,
+    error: '',
   },
   {
     id: 'usdc',
@@ -285,6 +287,7 @@ export const boostListToken = [
     walletEditor: 0,
     transferEditor: 0,
     stateChannelEditor: 0,
+    error: '',
   },
   {
     id: 'dai',
@@ -295,6 +298,7 @@ export const boostListToken = [
     walletEditor: 0,
     transferEditor: 0,
     stateChannelEditor: 0,
+    error: '',
   },
   {
     id: 'wbtc',
@@ -305,6 +309,7 @@ export const boostListToken = [
     walletEditor: 0,
     transferEditor: 0,
     stateChannelEditor: 0,
+    error: '',
   },
   {
     id: 'sussd',
@@ -315,5 +320,6 @@ export const boostListToken = [
     walletEditor: 0,
     transferEditor: 0,
     stateChannelEditor: 0,
+    error: '',
   },
 ]
