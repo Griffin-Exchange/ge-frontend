@@ -68,6 +68,14 @@ const TopUpCards: React.FC = () => {
     // setOptionCurrency(newArr)
   }
 
+  const setWalletEditor = (total: any, name: any) => {
+    boostListToken.forEach((i) => {
+      if (i.name === name) {
+        i.walletEditor = total
+      }
+    })
+  }
+
   return (
     <Container>
       <StyledCards>
@@ -82,6 +90,7 @@ const TopUpCards: React.FC = () => {
           step={step}
           setStep={setStep}
           handleTransferChanged={handleTransferChanged}
+          setWalletEditor={setWalletEditor}
         />
       </StyledCards>
     </Container>
@@ -99,6 +108,7 @@ interface TopUpCardProps {
   step: Boolean
   setStep: Function
   handleTransferChanged: Function
+  setWalletEditor: Function
 }
 
 const TopUpCardContainer: React.FC<TopUpCardProps> = ({
@@ -112,6 +122,7 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
   step,
   setStep,
   handleTransferChanged,
+  setWalletEditor,
 }) => {
   return (
     <StyledCardWrapper>
@@ -146,10 +157,14 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
                   data.status === true ? (
                     data.name === 'ETH' ? (
                       <RowSpaceBetween>
+                        {setWalletEditor(
+                          wallet.balance / 1000000000000000000,
+                          data.name,
+                        )}
                         <SpanRowName>{data.name}</SpanRowName>
                         <StyledFinance>
                           <InputRowStyle
-                            value={data.walletEditor}
+                            value={data.walletEditor.toFixed(4)}
                             placeholder="0"
                             readOnly
                           />
@@ -181,6 +196,7 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
                         addressToken={data.tokenAddress}
                         amount={amount}
                         setAmount={handleTransferChanged}
+                        setWalletEditor={setWalletEditor}
                       />
                     )
                   ) : null,
@@ -234,6 +250,7 @@ interface RowInputProps {
   data: any
   amount: number
   setAmount: Function
+  setWalletEditor: Function
 }
 
 const RowInput: React.FC<RowInputProps> = ({
@@ -242,13 +259,18 @@ const RowInput: React.FC<RowInputProps> = ({
   data,
   amount,
   setAmount,
+  setWalletEditor,
 }) => {
   return (
     <RowSpaceBetween>
       <SpanRowName>{data.name}</SpanRowName>
+      {setWalletEditor(
+        getBalanceNumber(useTokenBalance(addressToken)),
+        data.name,
+      )}
       <StyledFinance>
         <InputRowStyle
-          value={getBalanceNumber(useTokenBalance(addressToken)).toFixed(4)}
+          value={data.walletEditor.toFixed(4)}
           placeholder="0"
           readOnly
         />
