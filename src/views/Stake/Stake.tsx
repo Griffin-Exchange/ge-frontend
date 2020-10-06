@@ -8,16 +8,17 @@ import { provider } from 'web3-core'
 
 import Page from '../../components/Page'
 import Button from '../../components/Button'
+import Spacer from '../../components/Spacer'
 import PageHeader from '../../components/PageHeader'
 import WalletProviderModal from '../../components/WalletProviderModal'
 
 import useModal from '../../hooks/useModal'
 
-import useFarm from '../../hooks/useFarm'
 import { getContract } from '../../utils/erc20'
 import { GFINPools } from '../../sushi/lib/constants'
 
 import Stake from './components/Stake'
+import Harvest from './components/Harvest'
 
 const Farm: React.FC = () => {
   const { account } = useWallet()
@@ -29,9 +30,9 @@ const Farm: React.FC = () => {
 
   const { ethereum } = useWallet()
 
-  const lpContract = useMemo(() => {
-    return getContract(ethereum as provider, GFINPools[0].lpAddresses[1])
-  }, [ethereum, GFINPools[0].lpAddresses[1]])
+  const tokenContract = useMemo(() => {
+    return getContract(ethereum as provider, GFINPools[0].tokenAddresses[1])
+  }, [ethereum, GFINPools[0].tokenAddresses[1]])
 
   return (
     <>
@@ -46,13 +47,16 @@ const Farm: React.FC = () => {
             />
             {/* <FarmCards /> */}
             {/* <div>TBD</div> */}
-
             <StyledCardsWrapper>
               <StyledCardWrapper>
+                <Harvest pid={GFINPools[0].pid} />
+              </StyledCardWrapper>
+              <Spacer />
+              <StyledCardWrapper>
                 <Stake
-                  lpContract={lpContract}
+                  tokenContract={tokenContract}
                   pid={GFINPools[0].pid}
-                  tokenName={GFINPools[0].symbol.toUpperCase()}
+                  tokenName="GFIN"
                 />
               </StyledCardWrapper>
             </StyledCardsWrapper>

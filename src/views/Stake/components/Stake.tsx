@@ -22,18 +22,18 @@ import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
 
 interface StakeProps {
-  lpContract: Contract
+  tokenContract: Contract
   pid: number
   tokenName: string
 }
 
-const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
+const Stake: React.FC<StakeProps> = ({ tokenContract, pid, tokenName }) => {
   const [requestedApproval, setRequestedApproval] = useState(false)
 
-  const allowance = useAllowance(lpContract)
-  const { onApprove } = useApprove(lpContract)
+  const allowance = useAllowance(tokenContract)
+  const { onApprove } = useApprove(tokenContract)
 
-  const tokenBalance = useTokenBalance(lpContract.options.address)
+  const tokenBalance = useTokenBalance(tokenContract.options.address)
   const stakedBalance = useStakedBalance(pid)
 
   const { onStake } = useStake(pid)
@@ -73,7 +73,13 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
-            <CardIcon>👨🏻‍🍳</CardIcon>
+            <CardIcon>
+              <img
+                src={require(`../../../assets/img/griffin.png`)}
+                height="35"
+                alt={'GFIN'}
+              />
+            </CardIcon>
             <Value value={getBalanceNumber(stakedBalance)} />
             <Label text={`${tokenName} Tokens Staked`} />
           </StyledCardHeader>

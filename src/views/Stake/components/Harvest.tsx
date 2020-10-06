@@ -9,6 +9,7 @@ import Value from '../../../components/Value'
 import useEarnings from '../../../hooks/useEarnings'
 import useReward from '../../../hooks/useReward'
 import { getBalanceNumber } from '../../../utils/formatBalance'
+import { GFINPools } from '../../../sushi/lib/constants'
 
 interface HarvestProps {
   pid: number
@@ -24,14 +25,20 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
-            <CardIcon>🍣</CardIcon>
+            <CardIcon>
+              <img
+                src={require(`../../../assets/img/icon-pools/${GFINPools[0].icon}`)}
+                height="100"
+                alt={GFINPools[0].tokenSymbol}
+              />
+            </CardIcon>
             <Value value={getBalanceNumber(earnings)} />
-            <Label text="GFIN Earned" />
+            <Label text="AGATE Available" />
           </StyledCardHeader>
           <StyledCardActions>
             <Button
               disabled={!earnings.toNumber() || pendingTx}
-              text={pendingTx ? 'Collecting GFIN' : 'Spawn'}
+              text={pendingTx ? 'Collecting GFIN' : 'Convert to GFIN'}
               onClick={async () => {
                 setPendingTx(true)
                 await onReward()
