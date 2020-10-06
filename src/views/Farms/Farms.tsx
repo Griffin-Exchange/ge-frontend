@@ -33,10 +33,10 @@ const Farms: React.FC = () => {
                 <Route exact path={path}>
                   <PageHeader
                     icon={<img src={griffin} height="120" />}
-                    subtitle="Earn GFIN tokens by staking Uniswap V2 LP Tokens."
-                    title="Select Your Favorite Dishes"
+                    subtitle="Griffins inhabit the mystical RIPHEAN MOUNTAINS, and are ridden by powerful knights and magicians, because of their speed and ability to fly."
+                    title="Farm GFIN by staking LP Tokens."
                   />
-                  <StyledTab>
+                  {/* <StyledTab>
                     <Button
                       onClick={() => setFarmsType('gfin')}
                       variant={farmsType === 'gfin' ? 'secondary' : 'default'}
@@ -50,7 +50,7 @@ const Farms: React.FC = () => {
                       size="md"
                       text="Hungry Bird"
                     />
-                  </StyledTab>
+                  </StyledTab> */}
                   <FarmCards type={farmsType} />
                 </Route>
                 <Route path={`${path}/:type/:farmId`}>

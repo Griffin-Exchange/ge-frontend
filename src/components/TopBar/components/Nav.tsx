@@ -13,10 +13,10 @@ const Nav: React.FC = () => {
         Home
       </StyledLink>
       <StyledLink exact activeClassName="active" to="/farms">
-        Menu
+        Riphean Mountains
       </StyledLink>
       <StyledLink exact activeClassName="active" to="/staking">
-        Staking
+        Golden Nest
       </StyledLink>
       <StyledAbsoluteLink
         href="https://app.uniswap.org/"
@@ -33,10 +33,10 @@ const Nav: React.FC = () => {
             href="https://snapshot.page/#/sushi"
             target="_blank"
           >
-            Gov
+            Flock of Birds
           </StyledAbsoluteLink>
           <StyledLink exact activeClassName="active" to="/boost">
-            Boost
+            Chasing Arimaspian
           </StyledLink>
         </>
       )}

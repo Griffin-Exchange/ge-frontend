@@ -41,8 +41,8 @@ const Farm: React.FC = () => {
           <>
             <PageHeader
               icon={<img src={griffin} height="120" />}
-              title="Stake Griffin Tokens & Earn Fees"
-              subtitle="0.05% of all GriffinSwap trades are rewarded to GFIN stakers"
+              title="Stake GFIN, Earn AGATE & Emerald"
+              subtitle="Griffins lay AGATE eggs in their GOLDEN NESTS, and sometimes Emerald (0.05% fees when swap occur)"
             />
             {/* <FarmCards /> */}
             {/* <div>TBD</div> */}

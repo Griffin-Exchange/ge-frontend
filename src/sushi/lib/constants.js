@@ -77,7 +77,7 @@ export const GFINPools = [
     tokenAddresses: {
       1: '0x21E19121e1360e09AA1F810280c97A87b85d1069',
     },
-    name: 'Gryffindor',
+    name: 'Griffin d\'or',
     symbol: 'GFIN/ETH UNILP',
     tokenSymbol: 'GFIN',
     icon: 'gfin-eth.png',
@@ -90,7 +90,7 @@ export const GFINPools = [
     tokenAddresses: {
       1: '0xdac17f958d2ee523a2206206994597c13d831ec7',
     },
-    name: 'Tethereum',
+    name: 'Tethereum Hill',
     symbol: 'USDT/ETH UNILP',
     tokenSymbol: 'USDT',
     icon: 'usdt-eth.png',
@@ -98,28 +98,28 @@ export const GFINPools = [
   {
     pid: 2,
     lpAddresses: {
-      1: '0xf80758ab42c3b07da84053fd88804bcb6baa4b5c',
-    },
-    tokenAddresses: {
-      1: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
-    },
-    name: 'Synthdollar',
-    symbol: 'SUSD/ETH UNILP',
-    tokenSymbol: 'SUSD',
-    icon: 'susd-eth.png',
-  },
-  {
-    pid: 3,
-    lpAddresses: {
       1: '0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc',
     },
     tokenAddresses: {
       1: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
     },
-    name: 'Coindollar',
+    name: 'Cresting Dollar',
     symbol: 'USDC/ETH UNILP',
     tokenSymbol: 'USDC',
     icon: 'usdc-eth.png',
+  },
+  {
+    pid: 3,
+    lpAddresses: {
+      1: '0xf80758ab42c3b07da84053fd88804bcb6baa4b5c',
+    },
+    tokenAddresses: {
+      1: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
+    },
+    name: 'Snowy Dollar',
+    symbol: 'SUSD/ETH UNILP',
+    tokenSymbol: 'SUSD',
+    icon: 'susd-eth.png',
   },
   {
     pid: 4,
@@ -129,7 +129,7 @@ export const GFINPools = [
     tokenAddresses: {
       1: '0x6b175474e89094c44da98b954eedeac495271d0f',
     },
-    name: 'Everydai',
+    name: 'Everydai Climbs',
     symbol: 'DAI/ETH UNILP',
     tokenSymbol: 'DAI',
     icon: 'dai-eth.png',
@@ -142,10 +142,36 @@ export const GFINPools = [
     tokenAddresses: {
       1: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
     },
-    name: 'Satozip',
+    name: 'Satozip Bridge',
     symbol: 'wBTC/ETH UNILP',
     tokenSymbol: 'wBTC',
     icon: 'wbtc-eth.png',
+  },
+  {
+    pid: 6,
+    lpAddresses: {
+      1: '0xf52f433b79d21023af94251958bed3b64a2b7930',
+    },
+    tokenAddresses: {
+      1: '0xc8c97d9b0af219c2329a0179f6ab8c7a55b39fc1',
+    },
+    name: 'Hiking Hut',
+    symbol: 'HKMT/ETH UNILP',
+    tokenSymbol: 'HKMT',
+    icon: 'hkmt-eth.png',
+  },
+  {
+    pid: 7,
+    lpAddresses: {
+      1: '0xf1f85b2c54a2bd284b1cf4141d64fd171bd85539',
+    },
+    tokenAddresses: {
+      1: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
+    },
+    name: 'Sushi Dollar',
+    symbol: 'SUSD/ETH SUSHILP',
+    tokenSymbol: 'SUSD',
+    icon: 'ssusd-eth.png',
   },
 ]
 
@@ -153,51 +179,12 @@ export const supportedPools = [
   {
     pid: 0,
     lpAddresses: {
-      1: '0xc3d03e4f041fd4cd388c549ee2a29a9e5075882f',
-    },
-    tokenAddresses: {
-      1: '0x6b175474e89094c44da98b954eedeac495271d0f',
-    },
-    name: 'Everydai Sushi',
-    symbol: 'DAI/ETH SUSHILP',
-    tokenSymbol: 'DAI',
-    icon: 'dai-eth.png',
-  },
-  {
-    pid: 1,
-    lpAddresses: {
-      1: '0x397ff1542f962076d0bfe58ea045ffa2d347aca0',
-    },
-    tokenAddresses: {
-      1: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-    },
-    name: 'Coindollar Sushi',
-    symbol: 'USDC/ETH SUSHILP',
-    tokenSymbol: 'USDC',
-    icon: 'usdc-eth.png',
-  },
-  {
-    pid: 2,
-    lpAddresses: {
-      1: '0x06da0fd433c1a5d7a4faa01111c044910a184553',
-    },
-    tokenAddresses: {
-      1: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-    },
-    name: 'Tethereum Sushi',
-    symbol: 'USDT/ETH SUSHILP',
-    tokenSymbol: 'USDT',
-    icon: 'usdt-eth.png',
-  },
-  {
-    pid: 3,
-    lpAddresses: {
       1: '0xf1f85b2c54a2bd284b1cf4141d64fd171bd85539',
     },
     tokenAddresses: {
       1: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
     },
-    name: 'Synthdollar Sushi',
+    name: 'Snowy Dollar',
     symbol: 'SUSD/ETH SUSHILP',
     tokenSymbol: 'SUSD',
     icon: 'susd-eth.png',
