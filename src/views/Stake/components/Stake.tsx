@@ -77,7 +77,7 @@ const Stake: React.FC<StakeProps> = ({ tokenContract, pid, tokenName }) => {
               <img
                 src={require(`../../../assets/img/griffin.png`)}
                 height="35"
-                alt={'GFIN'}
+                alt={tokenName}
               />
             </CardIcon>
             <Value value={getBalanceNumber(stakedBalance)} />

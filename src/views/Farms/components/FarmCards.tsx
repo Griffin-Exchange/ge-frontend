@@ -212,7 +212,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, type }) => {
               )}
             </Button>
             <StyledInsight>
-              <span style={{ color: '#fc8a58', fontWeight: 'bold' }}>APY</span>
+              <span style={{ color: '##2172E5', fontWeight: 'bold' }}>APY</span>
               <span>
                 {farm.apy
                   ? `${farm.apy

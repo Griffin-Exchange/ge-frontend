@@ -177,17 +177,17 @@ export const GFINPools = [
 
 export const supportedPools = [
   {
-    pid: 0,
+    pid: 8,
     lpAddresses: {
-      1: '0xf1f85b2c54a2bd284b1cf4141d64fd171bd85539',
+      1: '0x8798249c2e607446efb7ad49ec89dd1865ff4272',
     },
     tokenAddresses: {
-      1: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
+      1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
     },
-    name: 'Snowy Dollar',
-    symbol: 'SUSD/ETH SUSHILP',
-    tokenSymbol: 'SUSD',
-    icon: 'susd-eth.png',
+    name: 'Stake SUSHI',
+    symbol: 'Stake SUSHI win xSUSHI',
+    tokenSymbol: 'SUSHI',
+    icon: 'gfin-eth.png',
   },
 ]
 

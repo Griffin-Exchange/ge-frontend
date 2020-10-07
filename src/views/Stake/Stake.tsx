@@ -15,7 +15,7 @@ import WalletProviderModal from '../../components/WalletProviderModal'
 import useModal from '../../hooks/useModal'
 
 import { getContract } from '../../utils/erc20'
-import { GFINPools } from '../../sushi/lib/constants'
+import { supportedPools } from '../../sushi/lib/constants'
 
 import Stake from './components/Stake'
 import Harvest from './components/Harvest'
@@ -30,9 +30,9 @@ const Farm: React.FC = () => {
 
   const { ethereum } = useWallet()
 
-  const tokenContract = useMemo(() => {
-    return getContract(ethereum as provider, GFINPools[0].tokenAddresses[1])
-  }, [ethereum, GFINPools[0].tokenAddresses[1]])
+  const lpContract = useMemo(() => {
+    return getContract(ethereum as provider, supportedPools[0].lpAddresses[1])
+  }, [ethereum, supportedPools[0].lpAddresses[1]])
 
   return (
     <>
@@ -49,13 +49,13 @@ const Farm: React.FC = () => {
             {/* <div>TBD</div> */}
             <StyledCardsWrapper>
               <StyledCardWrapper>
-                <Harvest pid={GFINPools[0].pid} />
+                <Harvest pid={supportedPools[0].pid} />
               </StyledCardWrapper>
               <Spacer />
               <StyledCardWrapper>
                 <Stake
-                  tokenContract={tokenContract}
-                  pid={GFINPools[0].pid}
+                  tokenContract={lpContract}
+                  pid={supportedPools[0].pid}
                   tokenName="GFIN"
                 />
               </StyledCardWrapper>

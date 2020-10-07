@@ -9,7 +9,7 @@ import Value from '../../../components/Value'
 import useEarnings from '../../../hooks/useEarnings'
 import useReward from '../../../hooks/useReward'
 import { getBalanceNumber } from '../../../utils/formatBalance'
-import { GFINPools } from '../../../sushi/lib/constants'
+import { supportedPools } from '../../../sushi/lib/constants'
 
 interface HarvestProps {
   pid: number
@@ -27,9 +27,9 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
           <StyledCardHeader>
             <CardIcon>
               <img
-                src={require(`../../../assets/img/icon-pools/${GFINPools[0].icon}`)}
+                src={require(`../../../assets/img/icon-pools/${supportedPools[0].icon}`)}
                 height="100"
-                alt={GFINPools[0].tokenSymbol}
+                alt={supportedPools[0].tokenSymbol}
               />
             </CardIcon>
             <Value value={getBalanceNumber(earnings)} />
