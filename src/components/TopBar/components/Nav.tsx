@@ -18,17 +18,6 @@ const Nav: React.FC = () => {
       <StyledLink exact activeClassName="active" to="/staking">
         Golden Nest
       </StyledLink>
-      <StyledAbsoluteLink
-        href="https://app.uniswap.org/"
-        target="_blank"
-      >
-        Exchange
-      </StyledAbsoluteLink>
-      {!!account && (
-        <>
-          <StyledLink exact activeClassName="active" to="/topup">
-            Top Up
-          </StyledLink>
           <StyledAbsoluteLink
             href="https://snapshot.page/#/sushi"
             target="_blank"
@@ -37,6 +26,17 @@ const Nav: React.FC = () => {
           </StyledAbsoluteLink>
           <StyledLink exact activeClassName="active" to="/boost">
             Chasing Arimaspian
+          </StyledLink>
+          <StyledAbsoluteLink
+        href="http://localhost:3001/"
+        target="_blank"
+      >
+        Exchange
+      </StyledAbsoluteLink>
+      {!!account && (
+        <>
+          <StyledLink exact activeClassName="active" to="/topup">
+            Top Up
           </StyledLink>
         </>
       )}

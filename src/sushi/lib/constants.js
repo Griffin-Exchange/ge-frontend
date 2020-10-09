@@ -43,7 +43,7 @@ export const contractAddresses = {
     1: '0x21E19121e1360e09AA1F810280c97A87b85d1069',
   },
   masterChef: {
-    1: '0x03EaB41Ce83f1ad532280Ac459be32341d75eb66',
+    1: '0x88375b58CB7b8B67CC46CF56A81395Fe8244Bc34',
   },
   weth: {
     1: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
@@ -72,7 +72,7 @@ export const GFINPools = [
   {
     pid: 0,
     lpAddresses: {
-      1: '0xce84867c3c02b05dc570d0135103d3fb9cc19433',
+      1: '0x550334c8ae2c04ae6abdbf1d82fb82ffb1ea2264',
     },
     tokenAddresses: {
       1: '0x21E19121e1360e09AA1F810280c97A87b85d1069',
@@ -155,11 +155,12 @@ export const GFINPools = [
     tokenAddresses: {
       1: '0xc8c97d9b0af219c2329a0179f6ab8c7a55b39fc1',
     },
-    name: 'Hiking Hut',
-    symbol: 'HKMT/ETH UNILP',
+    name: 'Hikers Hut',
+    symbol: 'HKMT/USDT UNILP',
     tokenSymbol: 'HKMT',
-    icon: 'hkmt-eth.png',
+    icon: 'hkmt-usdt.png',
   },
+  
   {
     pid: 7,
     lpAddresses: {
@@ -179,14 +180,14 @@ export const supportedPools = [
   {
     pid: 8,
     lpAddresses: {
-      1: '0x8798249c2e607446efb7ad49ec89dd1865ff4272',
+      1: '0x906B6992daF982ACddB57ff1351f17DC8B5017B6',
     },
     tokenAddresses: {
-      1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+      1: '0x21E19121e1360e09AA1F810280c97A87b85d1069',
     },
-    name: 'Stake SUSHI',
-    symbol: 'Stake SUSHI win xSUSHI',
-    tokenSymbol: 'SUSHI',
+    name: 'Stake GFIN',
+    symbol: 'Stake GFIN win AGATE',
+    tokenSymbol: 'GFIN',
     icon: 'gfin-eth.png',
   },
 ]
