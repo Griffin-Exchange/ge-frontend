@@ -10,13 +10,13 @@ import useEarnings from '../../../hooks/useEarnings'
 import useReward from '../../../hooks/useReward'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 
-import griffin from '../../../assets/img/griffin.png'
-
 interface HarvestProps {
   pid: number
+  icon: any
+  tokenSymbol: any
 }
 
-const Harvest: React.FC<HarvestProps> = ({ pid }) => {
+const Harvest: React.FC<HarvestProps> = ({ pid, icon, tokenSymbol }) => {
   const earnings = useEarnings(pid)
   const [pendingTx, setPendingTx] = useState(false)
   const { onReward } = useReward(pid)
@@ -27,15 +27,19 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
         <StyledCardContentInner>
           <StyledCardHeader>
             <CardIcon>
-              <img src={griffin} height="45" alt="griffin-logo" />
+              <img
+                src={require(`../../../assets/img/icon-pools/${icon}`)}
+                height="100"
+                alt={tokenSymbol}
+              />
             </CardIcon>
             <Value value={getBalanceNumber(earnings)} />
-            <Label text="GFIN Earned" />
+            <Label text={`${tokenSymbol} Earned`} />
           </StyledCardHeader>
           <StyledCardActions>
             <Button
               disabled={!earnings.toNumber() || pendingTx}
-              text={pendingTx ? 'Collecting GFIN' : 'Spawn'}
+              text={pendingTx ? `Collecting ${tokenSymbol}` : 'Spawn'}
               onClick={async () => {
                 setPendingTx(true)
                 await onReward()

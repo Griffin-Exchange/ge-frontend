@@ -57,14 +57,20 @@ const Farm: React.FC = () => {
   return (
     <>
       <PageHeader
-        icon={icon}
+        icon={
+          <img
+            src={require(`../../assets/img/icon-pools/${icon}`)}
+            height="120"
+            alt={lpTokenName}
+          />
+        }
         subtitle={`Deposit ${lpTokenName}  Tokens and earn ${earnTokenName}`}
         title={name}
       />
       <StyledFarm>
         <StyledCardsWrapper>
           <StyledCardWrapper>
-            <Harvest pid={pid} />
+            <Harvest pid={pid} icon={icon} tokenSymbol={lpTokenName} />
           </StyledCardWrapper>
           <Spacer />
           <StyledCardWrapper>
