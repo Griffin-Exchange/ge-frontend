@@ -49,7 +49,11 @@ const Farm: React.FC = () => {
             {/* <div>TBD</div> */}
             <StyledCardsWrapper>
               <StyledCardWrapper>
-                <Harvest pid={supportedPools[0].pid} />
+                <Harvest
+                  pid={supportedPools[0].pid}
+                  icon={supportedPools[0].icon}
+                  tokenSymbol="GFIN"
+                />
               </StyledCardWrapper>
               <Spacer />
               <StyledCardWrapper>

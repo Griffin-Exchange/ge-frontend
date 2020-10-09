@@ -9,13 +9,14 @@ import Value from '../../../components/Value'
 import useEarnings from '../../../hooks/useEarnings'
 import useReward from '../../../hooks/useReward'
 import { getBalanceNumber } from '../../../utils/formatBalance'
-import { supportedPools } from '../../../sushi/lib/constants'
 
 interface HarvestProps {
   pid: number
+  icon: any
+  tokenSymbol: any
 }
 
-const Harvest: React.FC<HarvestProps> = ({ pid }) => {
+const Harvest: React.FC<HarvestProps> = ({ pid,icon, tokenSymbol }) => {
   const earnings = useEarnings(pid)
   const [pendingTx, setPendingTx] = useState(false)
   const { onReward } = useReward(pid)
@@ -27,9 +28,9 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
           <StyledCardHeader>
             <CardIcon>
               <img
-                src={require(`../../../assets/img/icon-pools/${supportedPools[0].icon}`)}
+                src={require(`../../../assets/img/icon-pools/${icon}`)}
                 height="100"
-                alt={supportedPools[0].tokenSymbol}
+                alt={tokenSymbol}
               />
             </CardIcon>
             <Value value={getBalanceNumber(earnings)} />
