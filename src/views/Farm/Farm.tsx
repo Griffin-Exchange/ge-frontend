@@ -70,13 +70,15 @@ const Farm: React.FC = () => {
       <StyledFarm>
         <StyledCardsWrapper>
           <StyledCardWrapper>
-            <Harvest pid={pid} icon={icon} tokenSymbol={lpTokenName} />
+            <Harvest pid={pid} tokenSymbol={lpTokenName} />
           </StyledCardWrapper>
           <Spacer />
           <StyledCardWrapper>
             <Stake
               lpContract={lpContract}
               pid={pid}
+              icon={icon} 
+              tokenSymbol={lpTokenName}
               tokenName={lpToken.toUpperCase()}
             />
           </StyledCardWrapper>

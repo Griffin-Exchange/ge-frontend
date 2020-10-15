@@ -84,7 +84,7 @@ export const getGFINFarms = (sushi) => {
           tokenAddress,
           tokenSymbol,
           tokenContract,
-          earnToken: 'GFIN',
+          earnToken: 'gfin',
           earnTokenAddress: sushi.contracts.sushi.options.address,
           icon,
         }),

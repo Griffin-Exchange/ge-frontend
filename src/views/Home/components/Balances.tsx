@@ -121,7 +121,7 @@ const Balances: React.FC = () => {
         <Footnote>
           <span style={{ width: '120px' }}>New rewards per block</span>
           <FooterDivider />
-          <FootnoteValue>1,000 GFIN</FootnoteValue>
+          <FootnoteValue>100 GFIN</FootnoteValue>
         </Footnote>
       </Card>
     </StyledWrapper>

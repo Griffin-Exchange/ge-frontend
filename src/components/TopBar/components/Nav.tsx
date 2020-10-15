@@ -19,7 +19,7 @@ const Nav: React.FC = () => {
         Golden Nest
       </StyledLink>
           <StyledAbsoluteLink
-            href="https://snapshot.page/#/sushi"
+            href="https://snapshot.page/#/griffin"
             target="_blank"
           >
             Flock of Birds
@@ -28,16 +28,22 @@ const Nav: React.FC = () => {
             Chasing Arimaspian
           </StyledLink>
           <StyledAbsoluteLink
-        href="http://localhost:3001/"
+        href="https://griffin.exchange/app/"
         target="_blank"
       >
         Exchange
       </StyledAbsoluteLink>
+      <StyledAbsoluteLink
+            href="https://griffin.exchange/analytics"
+            target="_blank"
+          >
+            Analytics
+          </StyledAbsoluteLink>
       {!!account && (
         <>
-          <StyledLink exact activeClassName="active" to="/topup">
+{/*           <StyledLink exact activeClassName="active" to="/topup">
             Top Up
-          </StyledLink>
+          </StyledLink> */}
         </>
       )}
 

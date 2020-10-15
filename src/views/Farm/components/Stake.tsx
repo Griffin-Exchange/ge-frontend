@@ -21,15 +21,17 @@ import { getBalanceNumber } from '../../../utils/formatBalance'
 import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
 
-import griffin from '../../../assets/img/griffin.png'
+
 
 interface StakeProps {
   lpContract: Contract
   pid: number
+  icon: any
+  tokenSymbol: any
   tokenName: string
 }
 
-const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
+const Stake: React.FC<StakeProps> = ({ lpContract, pid, icon, tokenSymbol, tokenName }) => {
   const [requestedApproval, setRequestedApproval] = useState(false)
 
   const allowance = useAllowance(lpContract)
@@ -76,7 +78,11 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
         <StyledCardContentInner>
           <StyledCardHeader>
             <CardIcon>
-              <img src={griffin} height="40" alt={'gfin'} />
+              <img
+                src={require(`../../../assets/img/icon-pools/${icon}`)}
+                height="100"
+                alt={tokenSymbol}
+              />
             </CardIcon>
             <Value value={getBalanceNumber(stakedBalance)} />
             <Label text={`${tokenName} Tokens Staked`} />

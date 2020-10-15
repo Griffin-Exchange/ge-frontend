@@ -111,19 +111,6 @@ export const GFINPools = [
   {
     pid: 3,
     lpAddresses: {
-      1: '0xf80758ab42c3b07da84053fd88804bcb6baa4b5c',
-    },
-    tokenAddresses: {
-      1: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
-    },
-    name: 'Snowy Dollar',
-    symbol: 'SUSD/ETH UNILP',
-    tokenSymbol: 'SUSD',
-    icon: 'susd-eth.png',
-  },
-  {
-    pid: 4,
-    lpAddresses: {
       1: '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11',
     },
     tokenAddresses: {
@@ -135,7 +122,7 @@ export const GFINPools = [
     icon: 'dai-eth.png',
   },
   {
-    pid: 5,
+    pid: 4,
     lpAddresses: {
       1: '0xBb2b8038a1640196FbE3e38816F3e67Cba72D940',
     },
@@ -148,7 +135,7 @@ export const GFINPools = [
     icon: 'wbtc-eth.png',
   },
   {
-    pid: 6,
+    pid: 5,
     lpAddresses: {
       1: '0xf52f433b79d21023af94251958bed3b64a2b7930',
     },
@@ -160,16 +147,15 @@ export const GFINPools = [
     tokenSymbol: 'HKMT',
     icon: 'hkmt-usdt.png',
   },
-  
   {
-    pid: 7,
+    pid: 6,
     lpAddresses: {
       1: '0xf1f85b2c54a2bd284b1cf4141d64fd171bd85539',
     },
     tokenAddresses: {
       1: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
     },
-    name: 'Sushi Dollar',
+    name: 'SuSynth Dollar',
     symbol: 'SUSD/ETH SUSHILP',
     tokenSymbol: 'SUSD',
     icon: 'ssusd-eth.png',

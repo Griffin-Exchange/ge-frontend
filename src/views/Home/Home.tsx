@@ -17,7 +17,7 @@ const Home: React.FC = () => {
         <PageHeader
           icon={<img src={griffin} height={200} />}
           title="GRIFFIN EXCHANGE"
-          subtitle="Stake Uniswap LP tokens to claim your very own GFIN Tokens!"
+          subtitle="Stake Uniswap/Sushi LP tokens to claim your very own GFIN Tokens!"
         />
 
         <Container>
@@ -34,7 +34,7 @@ const Home: React.FC = () => {
             margin: '0 auto',
           }}
         >
-          <Button text="🔪 See the Menu" to="/farms" variant="secondary" />
+          <Button text="See the Menu" to="/farms" variant="secondary" />
         </div>
       </Page>
     </>

@@ -28,7 +28,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid,icon, tokenSymbol }) => {
           <StyledCardHeader>
             <CardIcon>
               <img
-                src={require(`../../../assets/img/icon-pools/${icon}`)}
+                src={require(`../../../assets/img/griffinagate.png`)}
                 height="100"
                 alt={tokenSymbol}
               />
@@ -39,7 +39,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid,icon, tokenSymbol }) => {
           <StyledCardActions>
             <Button
               disabled={!earnings.toNumber() || pendingTx}
-              text={pendingTx ? 'Collecting GFIN' : 'Convert to GFIN'}
+              text={pendingTx ? 'Collecting GFIN' : 'Spawn'}
               onClick={async () => {
                 setPendingTx(true)
                 await onReward()

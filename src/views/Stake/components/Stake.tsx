@@ -75,8 +75,8 @@ const Stake: React.FC<StakeProps> = ({ tokenContract, pid, tokenName }) => {
           <StyledCardHeader>
             <CardIcon>
               <img
-                src={require(`../../../assets/img/griffin.png`)}
-                height="35"
+                src={require(`../../../assets/img/griffintokenbig.png`)}
+                height="90"
                 alt={tokenName}
               />
             </CardIcon>
