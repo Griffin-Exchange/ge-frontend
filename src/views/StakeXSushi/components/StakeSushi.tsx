@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-import React, {useCallback, useState} from 'react'
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
 import Button from '../../../components/Button'
 import Card from '../../../components/Card'
@@ -9,28 +9,27 @@ import Label from '../../../components/Label'
 import Value from '../../../components/Value'
 import useModal from '../../../hooks/useModal'
 import useTokenBalance from '../../../hooks/useTokenBalance'
-import {getBalanceNumber} from '../../../utils/formatBalance'
+import { getBalanceNumber } from '../../../utils/formatBalance'
 import DepositModal from './DepositModal'
-import {contractAddresses} from '../../../sushi/lib/constants'
-import useEnter from "../../../hooks/useEnter";
-import useLeave from "../../../hooks/useLeave";
-import useAllowanceStaking from "../../../hooks/useAllowanceStaking";
-import useApproveStaking from "../../../hooks/useApproveStaking";
+import { contractAddresses } from '../../../sushi/lib/constants'
+import useEnter from '../../../hooks/useEnter'
+import useLeave from '../../../hooks/useLeave'
+import useAllowanceStaking from '../../../hooks/useAllowanceStaking'
+import useApproveStaking from '../../../hooks/useApproveStaking'
 
-interface StakeProps {
-}
+interface StakeProps {}
 
 const StakeSushi: React.FC<StakeProps> = ({}) => {
-  const tokenName = "GFIN"
+  const tokenName = 'GFIN'
   const [requestedApproval, setRequestedApproval] = useState(false)
 
   const allowance = useAllowanceStaking()
-  const {onApprove} = useApproveStaking()
+  const { onApprove } = useApproveStaking()
 
   const tokenBalance = useTokenBalance(contractAddresses.sushi[1])
 
-  const {onEnter} = useEnter()
-  const {onLeave} = useLeave()
+  const { onEnter } = useEnter()
+  const { onLeave } = useLeave()
 
   const [onPresentDeposit] = useModal(
     <DepositModal
@@ -58,9 +57,15 @@ const StakeSushi: React.FC<StakeProps> = ({}) => {
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
-            <CardIcon>👨🏻‍🍳</CardIcon>
-            <Value value={getBalanceNumber(tokenBalance)}/>
-            <Label text={`GFIN Tokens Available`}/>
+            <CardIcon>
+              <img
+                src={require(`../../../assets/img/griffintokenbig.png`)}
+                height="90"
+                alt={tokenName}
+              />
+            </CardIcon>
+            <Value value={getBalanceNumber(tokenBalance)} />
+            <Label text={`GFIN Tokens Available`} />
           </StyledCardHeader>
           <StyledCardActions>
             {!allowance.toNumber() ? (
@@ -76,7 +81,7 @@ const StakeSushi: React.FC<StakeProps> = ({}) => {
                   text="Convert to AGATE"
                   onClick={onPresentDeposit}
                 />
-                <StyledActionSpacer/>
+                <StyledActionSpacer />
               </>
             )}
           </StyledCardActions>
