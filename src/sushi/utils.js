@@ -30,6 +30,10 @@ export const getSushiContract = (sushi) => {
   return sushi && sushi.contracts && sushi.contracts.sushi
 }
 
+export const getXSushiStakingContract = (sushi) => {
+  return sushi && sushi.contracts && sushi.contracts.xSushiStaking
+}
+
 export const getFarms = (sushi) => {
   return sushi
     ? sushi.contracts.pools.map(
@@ -157,6 +161,10 @@ export const getSushiSupply = async (sushi) => {
   return new BigNumber(await sushi.contracts.sushi.methods.totalSupply().call())
 }
 
+export const getXSushiSupply = async (sushi) => {
+  return new BigNumber(await sushi.contracts.xSushiStaking.methods.totalSupply().call())
+}
+
 export const stake = async (masterChefContract, pid, amount, account) => {
   return masterChefContract.methods
     .deposit(
@@ -216,4 +224,29 @@ export const redeem = async (masterChefContract, account) => {
   } else {
     alert('pool not active')
   }
+}
+
+export const enter = async (contract, amount, account) => {
+  // debugger
+  return contract.methods
+      .enter(
+          new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
+      )
+      .send({ from: account })
+      .on('transactionHash', (tx) => {
+        console.log(tx)
+        return tx.transactionHash
+      })
+}
+
+export const leave = async (contract, amount, account) => {
+  return contract.methods
+      .leave(
+          new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
+      )
+      .send({ from: account })
+      .on('transactionHash', (tx) => {
+        console.log(tx)
+        return tx.transactionHash
+      })
 }

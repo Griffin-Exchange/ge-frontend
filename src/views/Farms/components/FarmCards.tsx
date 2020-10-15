@@ -77,6 +77,10 @@ const FarmCards: React.FC<FarmCards> = ({ type }) => {
   )
   const gfinRows = gfinFarms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
+      console.log(gfinPrice)
+      console.log(gfinIndex)
+      console.log(stakedValue[gfinIndex])
+
       const farmWithStakedValue = {
         ...farm,
         ...stakedValue[i],
