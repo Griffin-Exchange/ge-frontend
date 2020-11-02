@@ -52,6 +52,8 @@ const FarmCards: React.FC<FarmCards> = ({ type }) => {
   const BLOCKS_PER_YEAR = new BigNumber(2336000)
   const SUSHI_PER_BLOCK = new BigNumber(1000)
 
+  let ethValueInSashimiNoWeight = new BigNumber(0)
+
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
       const farmWithStakedValue = {
@@ -77,6 +79,28 @@ const FarmCards: React.FC<FarmCards> = ({ type }) => {
   )
   const gfinRows = gfinFarms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
+      const notETHTokenPair = [5].includes(farm.pid)
+      if (stakedValue[i] && !notETHTokenPair) {
+        ethValueInSashimiNoWeight = ethValueInSashimiNoWeight.plus(
+          stakedValue[i].totalWethValue,
+        )
+      }
+
+      let stakedValueCurrentTotalWethValue =
+        stakedValue[i] && stakedValue[i].totalWethValue
+      if (
+        stakedValue[i] &&
+        notETHTokenPair &&
+        stakedValue[i].totalWethValue.toNumber() === 0
+      ) {
+        stakedValueCurrentTotalWethValue =
+          stakedValue[i].tokenAmount.times(gfinPrice).times(new BigNumber(2)) ||
+          new BigNumber(0)
+        ethValueInSashimiNoWeight = ethValueInSashimiNoWeight.plus(
+          stakedValueCurrentTotalWethValue,
+        )
+      }
+
       const farmWithStakedValue = {
         ...farm,
         ...stakedValue[i],
@@ -85,10 +109,30 @@ const FarmCards: React.FC<FarmCards> = ({ type }) => {
               .times(SUSHI_PER_BLOCK)
               .times(BLOCKS_PER_YEAR)
               .times(stakedValue[i].poolWeight)
-              .div(stakedValue[i].totalWethValue)
+              .div(stakedValueCurrentTotalWethValue)
           : null,
       }
       const newFarmRows = [...farmRows]
+      console.log("PID", farm.pid, farm.tokenSymbol )
+      console.log('gfinPrice', gfinPrice.toNumber())
+      console.log(
+        'poolWeight: ',
+        stakedValue[i] ? stakedValue[i].poolWeight.toNumber() : null,
+      )
+      console.log(
+        'tokenAmount: ',
+        stakedValue[i] ? stakedValue[i].tokenAmount.toNumber() : null,
+      )
+      console.log(
+        'totalWethValue: ',
+        stakedValue[i] ? stakedValue[i].totalWethValue.toNumber() : null,
+      )
+      console.log(
+        'stakedValueCurrentTotalWethValue: ',
+        stakedValueCurrentTotalWethValue
+          ? stakedValueCurrentTotalWethValue.toNumber()
+          : null,
+      )
       if (newFarmRows[newFarmRows.length - 1].length === 3) {
         newFarmRows.push([farmWithStakedValue])
       } else {
