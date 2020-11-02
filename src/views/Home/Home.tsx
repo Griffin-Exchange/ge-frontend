@@ -8,11 +8,12 @@ import Page from '../../components/Page'
 import PageHeader from '../../components/PageHeader'
 import Spacer from '../../components/Spacer'
 import Balances from './components/Balances'
+import CountdownUI from './components/CountdownUI'
 
 const Home: React.FC = () => {
   return (
     <>
-      <StyledBackground />
+      <StyledBackground>
       <Page>
         <PageHeader
           icon={<img src={griffin} height={200} />}
@@ -20,6 +21,8 @@ const Home: React.FC = () => {
           subtitle="Stake Uniswap/Sushi LP tokens to claim your very own GFIN Tokens!"
         />
 
+        <CountdownUI />
+        <Spacer size="lg" />
         <Container>
           <Balances />
         </Container>
@@ -37,6 +40,7 @@ const Home: React.FC = () => {
           <Button text="See the Menu" to="/farms" variant="secondary" />
         </div>
       </Page>
+      </StyledBackground>
     </>
   )
 }
@@ -44,13 +48,8 @@ const Home: React.FC = () => {
 const StyledBackground = styled.div`
   background: url(${background}) no-repeat;
   background-size: cover;
-  height: '100%';
+  min-height: 100%;
   width: '100%';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   z-index: -1;
 `
 
