@@ -25,6 +25,7 @@ const StyledPageHeader = styled.div`
   align-items: center;
   box-sizing: border-box;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   padding-bottom: ${(props) => props.theme.spacing[6]}px;
   padding-top: ${(props) => props.theme.spacing[6]}px;
@@ -33,10 +34,8 @@ const StyledPageHeader = styled.div`
 
 const StyledIcon = styled.div`
   font-size: 200px;
-  height: 200px;
   line-height: 200px;
   text-align: center;
-  width: 200px;
 `
 // font-family: 'Kaushan Script', sans-serif;
 

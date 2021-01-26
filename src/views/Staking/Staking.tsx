@@ -3,7 +3,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom'
 import { useWallet } from 'use-wallet'
 import styled from 'styled-components'
 
-import griffin from '../../assets/img/griffin.png'
+import goldennest from '../../assets/img/goldennest.png'
 import background from '../../assets/img/background-03.png'
 
 import Button from '../../components/Button'
@@ -26,9 +26,9 @@ const Staking: React.FC = () => {
           <>
             <Route exact path={path}>
               <PageHeader
-                icon={<img src={griffin} height="120" />}
-                subtitle="Welcome to the Sushi Bar, stake Sushi to earn Sushi."
-                title="Stake GFIN, Earn AGATE & Emerald"
+                icon={<img src={goldennest} height="250" />}
+                title="Migrate GIGA, Earn AGATE"
+                subtitle="Gigavis lay Agate eggs, with only occasional Emerald thrown in their Golden Nests"
               />
             </Route>
             <StakeXSushi />

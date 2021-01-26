@@ -1,4 +1,5 @@
 import React from 'react'
+import home from '../../assets/img/home.png'
 
 interface SushiIconProps {
   size?: number
@@ -15,7 +16,7 @@ const SushiIcon: React.FC<SushiIconProps> = ({ size = 36, v1, v2, v3 }) => (
       filter: v1 ? 'saturate(0.5)' : undefined,
     }}
   >
-    🍣
+    <img src={home} height={size} />
   </span>
 )
 

@@ -31,7 +31,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ onDismiss, visible }) => {
             to="/staking"
             onClick={onDismiss}
           >
-            Staking
+            Migrate
           </StyledLink>
         </StyledMobileMenu>
       </StyledMobileMenuWrapper>

@@ -9,7 +9,7 @@ import {
   contractAddresses,
   SUBTRACT_GAS_LIMIT,
   supportedPools,
-  GFINPools,
+  GIGAPools,
 } from './constants.js'
 import * as Types from './types.js'
 
@@ -36,7 +36,7 @@ export class Contracts {
         tokenContract: new this.web3.eth.Contract(ERC20Abi),
       }),
     )
-    this.GFINPools = GFINPools.map((pool) =>
+    this.GIGAPools = GIGAPools.map((pool) =>
       Object.assign(pool, {
         lpAddress: pool.lpAddresses[networkId],
         tokenAddress: pool.tokenAddresses[networkId],
@@ -67,7 +67,7 @@ export class Contracts {
         setProvider(tokenContract, tokenAddress)
       },
     )
-    this.GFINPools.forEach(
+    this.GIGAPools.forEach(
       ({ lpContract, lpAddress, tokenContract, tokenAddress }) => {
         setProvider(lpContract, lpAddress)
         setProvider(tokenContract, tokenAddress)

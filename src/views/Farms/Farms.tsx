@@ -3,7 +3,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom'
 import { useWallet } from 'use-wallet'
 
 import styled from 'styled-components'
-import griffin from '../../assets/img/griffin.png'
+import farms from '../../assets/img/farms.png'
 import background from '../../assets/img/background-01.png'
 
 import Button from '../../components/Button'
@@ -19,7 +19,7 @@ import Farm from '../Farm'
 import FarmCards from './components/FarmCards'
 
 const Farms: React.FC = () => {
-  const [farmsType, setFarmsType] = useState('gfin')
+  const [farmsType, setFarmsType] = useState('giga')
   const { path } = useRouteMatch()
   const { account } = useWallet()
   const [onPresentWalletProviderModal] = useModal(<WalletProviderModal />)
@@ -32,25 +32,10 @@ const Farms: React.FC = () => {
               <>
                 <Route exact path={path}>
                   <PageHeader
-                    icon={<img src={griffin} height="120" />}
-                    subtitle="Griffins inhabit the mystical RIPHEAN MOUNTAINS, and are ridden by powerful knights and magicians, because of their speed and ability to fly."
-                    title="Farm GFIN by staking LP Tokens."
+                    icon={<img src={farms} height="175" />}
+                    subtitle="Gigavis inhabit the mystical Riphean Mountain, ridden by powerful knights, because of their speed & ability to fly."
+                    title="Farm GIGA by migrating UNI/SUSHI LP Tokens."
                   />
-                  {/* <StyledTab>
-                    <Button
-                      onClick={() => setFarmsType('gfin')}
-                      variant={farmsType === 'gfin' ? 'secondary' : 'default'}
-                      size="md"
-                      text="Rider's Choice"
-                    />
-                    <Spacer size="lg" />
-                    <Button
-                      onClick={() => setFarmsType('sushi')}
-                      variant={farmsType === 'sushi' ? 'secondary' : 'default'}
-                      size="md"
-                      text="Hungry Bird"
-                    />
-                  </StyledTab> */}
                   <FarmCards type={farmsType} />
                 </Route>
                 <Route path={`${path}/:type/:farmId`}>

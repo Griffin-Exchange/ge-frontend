@@ -3,7 +3,7 @@ import { Context as FarmsContext, Farm } from '../contexts/Farms'
 
 const useFarm = (id: string, type: string): Farm => {
   const { farms, gfinFarms } = useContext(FarmsContext)
-  if (type === 'gfin') {
+  if (type === 'giga') {
     const gfinfarm = gfinFarms.find((farm) => {
       return farm.tokenSymbol === id
     })

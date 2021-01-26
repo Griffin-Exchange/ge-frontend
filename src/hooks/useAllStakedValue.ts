@@ -9,7 +9,7 @@ import {
   getMasterChefContract,
   getWethContract,
   getFarms,
-  getGFINFarms,
+  getGIGAFarms,
   getTotalLPWethValue,
 } from '../sushi/utils'
 import useSushi from './useSushi'
@@ -28,7 +28,7 @@ const useAllStakedValue = () => {
   const { account }: { account: string; ethereum: provider } = useWallet()
   const sushi = useSushi()
   const farms = getFarms(sushi)
-  const gfinfarms = getGFINFarms(sushi)
+  const gfinfarms = getGIGAFarms(sushi)
   const masterChefContract = getMasterChefContract(sushi)
   const wethContact = getWethContract(sushi)
   const block = useBlock()

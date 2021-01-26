@@ -39,7 +39,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid,icon, tokenSymbol }) => {
           <StyledCardActions>
             <Button
               disabled={!earnings.toNumber() || pendingTx}
-              text={pendingTx ? 'Collecting GFIN' : 'Spawn'}
+              text={pendingTx ? 'Collecting GIGA' : 'Spawn'}
               onClick={async () => {
                 setPendingTx(true)
                 await onReward()

@@ -89,10 +89,10 @@ const Balances: React.FC = () => {
     <StyledWrapper>
       <Card>
         <CardContent>
-          <StyledLabel>YOUR GRIFFIN BALANCES</StyledLabel>
+          <StyledLabel>YOUR GIGA BALANCES</StyledLabel>
           <LabelDivider />
           <BalanceContainer>
-            {!!account ? <PreffixBalance>GFIN</PreffixBalance> : <></>}
+            {!!account ? <PreffixBalance>GIGA</PreffixBalance> : <></>}
             <Value
               value={!!account ? getBalanceNumber(sushiBalance) : 'Locked'}
             />
@@ -102,17 +102,17 @@ const Balances: React.FC = () => {
           Pending harvest
           <FooterDivider />
           <FootnoteValue>
-            <PendingRewards /> GFIN
+            <PendingRewards /> GIGA
           </FootnoteValue>
         </Footnote>
       </Card>
       <Spacer />
       <Card>
         <CardContent>
-          <StyledLabel>TOTAL GRIFFIN SUPPLY</StyledLabel>
+          <StyledLabel>TOTAL GIGA SUPPLY</StyledLabel>
           <LabelDivider />
           <BalanceContainer>
-            {totalSupply ? <PreffixBalance>GFIN</PreffixBalance> : <></>}
+            {totalSupply ? <PreffixBalance>GIGA</PreffixBalance> : <></>}
             <Value
               value={totalSupply ? getBalanceNumber(totalSupply) : 'Locked'}
             />
@@ -121,7 +121,7 @@ const Balances: React.FC = () => {
         <Footnote>
           <span style={{ width: '120px' }}>New rewards per block</span>
           <FooterDivider />
-          <FootnoteValue>100 GFIN</FootnoteValue>
+          <FootnoteValue>100 GIGA</FootnoteValue>
         </Footnote>
       </Card>
     </StyledWrapper>

@@ -20,7 +20,7 @@ import useApproveStaking from '../../../hooks/useApproveStaking'
 interface StakeProps {}
 
 const StakeSushi: React.FC<StakeProps> = ({}) => {
-  const tokenName = 'GFIN'
+  const tokenName = 'GIGA'
   const [requestedApproval, setRequestedApproval] = useState(false)
 
   const allowance = useAllowanceStaking()
@@ -65,14 +65,14 @@ const StakeSushi: React.FC<StakeProps> = ({}) => {
               />
             </CardIcon>
             <Value value={getBalanceNumber(tokenBalance)} />
-            <Label text={`GFIN Tokens Available`} />
+            <Label text={`GIGA Tokens Available`} />
           </StyledCardHeader>
           <StyledCardActions>
             {!allowance.toNumber() ? (
               <Button
                 disabled={requestedApproval}
                 onClick={handleApprove}
-                text={`Approve GFIN`}
+                text={`Approve GIGA`}
               />
             ) : (
               <>

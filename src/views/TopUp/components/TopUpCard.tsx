@@ -75,10 +75,10 @@ const TopUpCardContainer: React.FC<TopUpCardProps> = ({
       <CardFarm>
         <CardContent>
           <CardIcon>
-            <img src={griffin} height="45" alt="griffin-logo" />
+            <img src={griffin} height="45" alt="giga-logo" />
           </CardIcon>
           <StyledContent>
-            <StyledTitle>Top Up and get more Griffin Token</StyledTitle>
+            <StyledTitle>Top Up and get more Giga Token</StyledTitle>
             <StyledSpacer />
             <StyledInsight>
               <span style={{ color: '#fc8a58', fontWeight: 'bold' }}>USD</span>

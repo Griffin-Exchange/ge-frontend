@@ -71,7 +71,7 @@ UNI-V2 LP Address on mainnet for reference
 12 SUSHI 0xce84867c3c02b05dc570d0135103d3fb9cc19433
 */
 
-export const GFINPools = [
+export const GIGAPools = [
   {
     pid: 0,
     lpAddresses: {
@@ -80,9 +80,9 @@ export const GFINPools = [
     tokenAddresses: {
       1: '0x21E19121e1360e09AA1F810280c97A87b85d1069',
     },
-    name: 'Griffin d\'or',
-    symbol: 'GFIN/ETH UNILP',
-    tokenSymbol: 'GFIN',
+    name: 'Giga bytes',
+    symbol: 'GIGA/ETH UNILP',
+    tokenSymbol: 'GIGA',
     icon: 'gfin-eth.png',
   },
   {
@@ -132,7 +132,7 @@ export const GFINPools = [
     tokenAddresses: {
       1: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
     },
-    name: 'Satozip Bridge',
+    name: 'Satozip Valley',
     symbol: 'wBTC/ETH UNILP',
     tokenSymbol: 'wBTC',
     icon: 'wbtc-eth.png',
@@ -174,9 +174,9 @@ export const supportedPools = [
     tokenAddresses: {
       1: '0x21E19121e1360e09AA1F810280c97A87b85d1069',
     },
-    name: 'Stake GFIN',
-    symbol: 'Stake GFIN win AGATE',
-    tokenSymbol: 'GFIN',
+    name: 'Migrate GIGA',
+    symbol: 'Migrate GIGA win AGATE',
+    tokenSymbol: 'GIGA',
     icon: 'gfin-eth.png',
   },
 ]

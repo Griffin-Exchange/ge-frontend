@@ -8,7 +8,7 @@ import {
   getEarned,
   getMasterChefContract,
   getFarms,
-  getGFINFarms,
+  getGIGAFarms,
 } from '../sushi/utils'
 import useSushi from './useSushi'
 import useBlock from './useBlock'
@@ -18,7 +18,7 @@ const useAllEarnings = () => {
   const { account }: { account: string; ethereum: provider } = useWallet()
   const sushi = useSushi()
   const farms = getFarms(sushi)
-  const gfinFarms = getGFINFarms(sushi)
+  const gfinFarms = getGIGAFarms(sushi)
   const masterChefContract = getMasterChefContract(sushi)
   const block = useBlock()
 

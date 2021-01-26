@@ -65,9 +65,9 @@ export const getFarms = (sushi) => {
     : []
 }
 
-export const getGFINFarms = (sushi) => {
+export const getGIGAFarms = (sushi) => {
   return sushi
-    ? sushi.contracts.GFINPools.map(
+    ? sushi.contracts.GIGAPools.map(
         ({
           pid,
           name,
@@ -88,7 +88,7 @@ export const getGFINFarms = (sushi) => {
           tokenAddress,
           tokenSymbol,
           tokenContract,
-          earnToken: 'gfin',
+          earnToken: 'giga',
           earnTokenAddress: sushi.contracts.sushi.options.address,
           icon,
         }),

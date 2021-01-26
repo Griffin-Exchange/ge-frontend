@@ -36,7 +36,7 @@ const FarmCards: React.FC<FarmCards> = ({ type }) => {
   )
 
   const gfinIndex = gfinFarms.findIndex(
-    ({ tokenSymbol }) => tokenSymbol === 'GFIN',
+    ({ tokenSymbol }) => tokenSymbol === 'GIGA',
   )
 
   const sushiPrice =
@@ -156,7 +156,7 @@ const FarmCards: React.FC<FarmCards> = ({ type }) => {
             ))}
           </StyledRow>
         ))
-      ) : !!gfinRows[0].length && type === 'gfin' ? (
+      ) : !!gfinRows[0].length && type === 'giga' ? (
         gfinRows.map((grfnRow, i) => (
           <StyledRow key={i}>
             {grfnRow.map((farm, j) => (
@@ -172,7 +172,7 @@ const FarmCards: React.FC<FarmCards> = ({ type }) => {
           {type === 'sushi' ? (
             <Loader text="Cooking the rice..." />
           ) : (
-            <Loader text="Griffin's warming up..." />
+            <Loader text="Giga's warming up..." />
           )}
         </StyledLoadingWrapper>
       )}
@@ -224,7 +224,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, type }) => {
 
   return (
     <StyledCardWrapper>
-      {(farm.tokenSymbol === 'SUSHI' || farm.tokenSymbol === 'GFIN') && (
+      {(farm.tokenSymbol === 'SUSHI' || farm.tokenSymbol === 'GIGA') && (
         <StyledCardAccent />
       )}
       <CardFarm>

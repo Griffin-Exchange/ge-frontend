@@ -19,13 +19,13 @@ const Nav: React.FC = () => {
         target="_blank"
         href="https://etherscan.io/address/0x21E19121e1360e09AA1F810280c97A87b85d1069#code"
       >
-        Staking Contract
+        Migrating Contract
       </StyledLink>
       <StyledLink
         target="_blank"
         href="https://uniswap.info/pair/0xce84867c3c02b05dc570d0135103d3fb9cc19433"
       >
-        {/* Uniswap GFIN-ETH */}
+        {/* Uniswap GIGA-ETH */}
         <img alt="uniswap" src={uniswapLogo} style={{ height: 24 }} />
       </StyledLink>
       <StyledLink target="_blank" href="https://discord.gg/fbqhQe">

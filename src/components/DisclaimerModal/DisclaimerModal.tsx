@@ -44,9 +44,9 @@ const DisclaimerModal: React.FC<DisclaimerModal> = ({
     } else {
       return (
         <div>
-          <p>Attention GFIN Uniswap LPs</p>
+          <p>Attention GIGA Uniswap LPs</p>
           <p>
-            The only Uniswap pool that is compatible with GFIN is GFIN/yCRV
+            The only Uniswap pool that is compatible with GIGA is GIGA/yCRV
             (Curve yPool tokens)
           </p>
           <p>Providing liquidity for other Uniswap pools is dangerous</p>

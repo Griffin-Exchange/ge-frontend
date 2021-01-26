@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import CardIcon from '../CardIcon'
+import home from '../../assets/img/home.png'
 
 interface LoaderProps {
   text?: string
@@ -11,7 +12,9 @@ const Loader: React.FC<LoaderProps> = ({ text }) => {
   return (
     <StyledLoader>
       <CardIcon>
-        <StyledSushi>🍣</StyledSushi>
+        <StyledSushi>
+          <img src={home} height={32} />
+        </StyledSushi>
       </CardIcon>
       {!!text && <StyledText>{text}</StyledText>}
     </StyledLoader>

@@ -28,10 +28,10 @@ const Harvest: React.FC<HarvestProps> = ({ pid, tokenSymbol }) => {
         <StyledCardContentInner>
           <StyledCardHeader>
            <CardIcon>
-              <img src={griffin} height="90" alt={'gfin'} />
+              <img src={griffin} height="90" alt={'giga'} />
             </CardIcon>
             <Value value={getBalanceNumber(earnings)} />
-            <Label text={`${tokenSymbol} Earned`} />
+            <Label text={`Giga Earned`} />
           </StyledCardHeader>
           <StyledCardActions>
             <Button

@@ -13,21 +13,24 @@ const Nav: React.FC = () => {
         Home
       </StyledLink>
       <StyledLink exact activeClassName="active" to="/farms">
-        Riphean Mountains
+        Farms
       </StyledLink>
       <StyledLink exact activeClassName="active" to="/staking">
         Golden Nest
       </StyledLink>
-          <StyledAbsoluteLink
-            href="https://snapshot.page/#/griffin"
-            target="_blank"
-          >
-            Flock of Birds
-          </StyledAbsoluteLink>
-          <StyledLink exact activeClassName="active" to="/boost">
-            Chasing Arimaspian
-          </StyledLink>
-          <StyledAbsoluteLink
+      <StyledAbsoluteLink
+        href="https://snapshot.page/#/griffin"
+        target="_blank"
+      >
+        Governance
+      </StyledAbsoluteLink>
+      <StyledAbsoluteLink
+        href="https://griffin.exchange/bridge"
+        target="_blank"
+      >
+        Token Bridge
+      </StyledAbsoluteLink>
+      <StyledAbsoluteLink
         href="https://griffin.exchange/app/"
         target="_blank"
       >

@@ -42,8 +42,8 @@ const Farm: React.FC = () => {
           <>
             <PageHeader
               icon={<img src={griffin} height="120" />}
-              title="Stake GFIN, Earn AGATE & Emerald"
-              subtitle="Griffins lay AGATE eggs in their GOLDEN NESTS, and sometimes Emerald (0.05% fees when swap occur)"
+              title="Migrate GIGA, Earn AGATE & Emerald"
+              subtitle="Griffins lay AGATE eggs in their GOLDEN NESTS, and sometimes Emerald (0.05% swap fees)"
             />
             {/* <FarmCards /> */}
             {/* <div>TBD</div> */}
@@ -52,7 +52,7 @@ const Farm: React.FC = () => {
                 <Harvest
                   pid={supportedPools[0].pid}
                   icon={supportedPools[0].icon}
-                  tokenSymbol="GFIN"
+                  tokenSymbol="GIGA"
                 />
               </StyledCardWrapper>
               <Spacer />
@@ -60,7 +60,7 @@ const Farm: React.FC = () => {
                 <Stake
                   tokenContract={lpContract}
                   pid={supportedPools[0].pid}
-                  tokenName="GFIN"
+                  tokenName="GIGA"
                 />
               </StyledCardWrapper>
             </StyledCardsWrapper>

@@ -32,27 +32,31 @@ const completed = () =>{
 
 const getBlockNumber = async (setBlockNumber: any) =>{
   try{
-    var _blockNumber = 11180000;
-    var response = await axios.get("https://api.etherscan.io/api?module=block&action=getblocknobytime&timestamp=1604317469&closest=before&apikey=DX4VNSMMV78DUEHZUTHXGSFMSPKRVWA691");
-    console.log(response);
-    setBlockNumber(_blockNumber - response.data.result)
+    var _blockNumber = 11650000;
+    var timestamp = Math.floor(Date.now() / 1000);
+    var response = await axios.get(`https://api.etherscan.io/api?module=block&action=getblocknobytime&timestamp=${timestamp}&closest=before&apikey=DX4VNSMMV78DUEHZUTHXGSFMSPKRVWA691`);
+    if(response.data.message === "OK"){
+      console.log(response);
+      setBlockNumber(_blockNumber - response.data.result)
+    }
   } catch (e){
     console.error(e)
   }
 }
 
 const CountdownUI: React.FC = () => {
-  const [blockNumber, setBlockNumber] = useState(11180000)
+  const [blockNumber, setBlockNumber] = useState(11650000)
 
   useEffect(()=>{
     getBlockNumber(setBlockNumber)
     setInterval(() => getBlockNumber(setBlockNumber), 10000);
   },[blockNumber])
+
   return (
     <>
       <Card>
         <CardContent>
-          {blockNumber <= 0 ? completed() : renderer(blockNumber === 11180000 ? "11180000" : blockNumber)}
+          {blockNumber <= 0 ? completed() : renderer(blockNumber)}
           {/* <Countdown
             autoStart={date && true}
             date={date}

@@ -58,14 +58,14 @@ const StakeXSushi: React.FC = () => {
         <StyledCardsWrapper>
           <StyledCardWrapper>
             <StyledInfo>
-              ℹ️️ You will earn a portion of the swaps fees based on the amount
-              of AGATE held relative the weight of the staking. AGATE can be
-              minted by staking GFIN. To redeem GFIN staked plus swap fees
-              convert AGATE back to SUSHI.{' '}
+              ℹ️️ You will earn a portion of the swaps fees (Emerald) based on the amount
+              of Agate held relative the weight of the migrating. Agate can be
+              minted by migrating GIGA. To redeem GIGA staked plus swap fees (Emerald)
+              convert Agate back to GIGA.{' '}
               {totalSupply
                 ? `There are currently ${getBalanceNumber(
                     totalSupply,
-                  )} AGATE in the whole pool.`
+                  )} Agate in the whole pool.`
                 : ''}
             </StyledInfo>
           </StyledCardWrapper>

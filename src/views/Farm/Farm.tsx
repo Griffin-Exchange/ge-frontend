@@ -85,8 +85,8 @@ const Farm: React.FC = () => {
         </StyledCardsWrapper>
         <Spacer size="lg" />
         <StyledInfo>
-          ⭐️ Every time you stake and unstake LP tokens, the contract will
-          automagically harvest GFIN rewards for you!
+          ⭐️ Every time you migrate and unmigrate LP tokens, the contract will
+          automagically harvest GIGA rewards for you!
         </StyledInfo>
         <Spacer size="lg" />
       </StyledFarm>

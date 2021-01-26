@@ -43,16 +43,16 @@ const UnstakeXSushi: React.FC<HarvestProps> = ({ lpContract }) => {
               <img
                 src={require(`../../../assets/img/griffinagate.png`)}
                 height="100"
-                alt="GFIN Logo"
+                alt="GIGA Logo"
               />
             </CardIcon>
             <Value value={getBalanceNumber(xSushiBalance)} />
-            <Label text="AGATE (Emerald) Available" />
+            <Label text="AGATE Available" />
           </StyledCardHeader>
           <StyledCardActions>
             <Button
               disabled={!xSushiBalance.toNumber() || pendingTx}
-              text={pendingTx ? 'Converting to GFIN' : 'Convert to GFIN'}
+              text={pendingTx ? 'Converting to GIGA' : 'Convert to GIGA'}
               onClick={async () => {
                 setPendingTx(true)
                 await onPresentLeave()

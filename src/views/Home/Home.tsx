@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import griffin from '../../assets/img/griffin.png'
-import background from '../../assets/img/background-02.png'
+import home from '../../assets/img/home.png'
+import background from '../../assets/img/background-03.png'
 import Button from '../../components/Button'
 import Container from '../../components/Container'
 import Page from '../../components/Page'
@@ -15,10 +15,11 @@ const Home: React.FC = () => {
     <>
       <StyledBackground>
       <Page>
+        <Spacer size="lg" />
         <PageHeader
-          icon={<img src={griffin} height={200} />}
-          title="GRIFFIN EXCHANGE"
-          subtitle="Stake Uniswap/Sushi LP tokens to claim your very own GFIN Tokens!"
+          icon={<img src={home} height={325} />}
+          subtitle="Gigavis are Griffins; legendary creature with the body, tail, and back legs of a lion; the head and wings of an eagle with talons as its front feet"
+          title="FAST & CHEAP AMM DEX on ETHEREUM L-2 !"
         />
 
         <CountdownUI />
@@ -27,10 +28,6 @@ const Home: React.FC = () => {
           <Balances />
         </Container>
         <Spacer size="lg" />
-        <StyledInfo>
-          🏆<b>Pro Tip</b>: GFIN-ETH UNI-V2 LP token pool yields TWICE more
-          token rewards per block.
-        </StyledInfo>
         <Spacer size="lg" />
         <div
           style={{
@@ -39,6 +36,7 @@ const Home: React.FC = () => {
         >
           <Button text="See the Menu" to="/farms" variant="secondary" />
         </div>
+        <Spacer size="lg" />
       </Page>
       </StyledBackground>
     </>
@@ -48,8 +46,13 @@ const Home: React.FC = () => {
 const StyledBackground = styled.div`
   background: url(${background}) no-repeat;
   background-size: cover;
-  min-height: 100%;
+  height: '100%';
   width: '100%';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: -1;
 `
 
